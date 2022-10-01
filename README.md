@@ -58,10 +58,8 @@ const div = d3.selectAll("div");
 
 ```mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+A-->B;
+B-->C;
 ```
 
 <!---
