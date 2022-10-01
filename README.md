@@ -41,7 +41,7 @@ $ chmod a+x gh-md-toc
 URL
 ====
 
-- [CSDN](https://www.csdn.net/){:target="_blank"}
+- [CSDN](https://www.csdn.net/?target=_blank)
 
 
 
