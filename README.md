@@ -42,7 +42,8 @@ URL
 ====
 
 - [CSDN](https://www.csdn.net/){target="_blank"}
-- <a href="https://www.csdn.net/" target="_blank">CSDN</a>
+
+<a href="https://www.csdn.net/" target="_blank">CSDN</a>
 
 <!---
 taichimaner/taichimaner is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
