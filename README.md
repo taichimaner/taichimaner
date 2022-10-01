@@ -1,5 +1,3 @@
-markdown: kramdown
-
 # 生物
 ## 海牛
 ## 儒艮
