@@ -41,9 +41,12 @@ $ chmod a+x gh-md-toc
 URL
 ====
 
-- [CSDN](https://www.csdn.net/){target="_blank"}
+- [CSDN](https://www.csdn.net/)
 
-<a href="https://www.csdn.net/" target="_blank">CSDN</a>
+<table>
+  <tr><th>aa</th><th>bb</th></tr>
+  <tr><td>11</td><td>22</td></tr>
+</table>
 
 <!---
 taichimaner/taichimaner is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
