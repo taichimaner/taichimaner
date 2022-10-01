@@ -42,7 +42,6 @@ URL
 ====
 
 - [CSDN](https://www.csdn.net/){target="_blank"}
-- [open new window][1] \n [1]: (https://abc.xyz" target="_blank)
 - <a href="https://www.csdn.net/" target="_blank">CSDN</a>
 
 <!---
