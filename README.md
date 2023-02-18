@@ -5,6 +5,12 @@
 
 [Features](#features) | [Installation](#installation) | [Usage](#usage) | [Examples](#examples) | [Command-line options](#options) | [網址](#URL)
 
+
+VS Code Extension
+==================
+
+- Git Extension Pack
+
 Table of Contents
 =================
    * [gh-md-toc](#gh-md-toc)
