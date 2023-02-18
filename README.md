@@ -11,6 +11,7 @@ VS Code Extension
 
 - Git Extension Pack
 - Docker
+- Thunder Client
 
 Table of Contents
 =================
