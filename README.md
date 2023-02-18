@@ -10,6 +10,7 @@ VS Code Extension
 ==================
 
 - Git Extension Pack
+- Docker
 
 Table of Contents
 =================
