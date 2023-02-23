@@ -57,9 +57,6 @@ path := EnvGet("PATH")
 }
 ```
 
-
-
-
 #### 找程式
 ```
 if (not WinExist("ahk_class Notepad"))
@@ -78,6 +75,25 @@ Send "Hello, world{!}"
   msg := "a=" A_ScreenWidth
   msg := Format("{1}{2}",msg,"b=" A_AhkVersion)
   msgbox msg
+}
+```
+
+
+#### 練習 Send
+```
+!z::
+{
+  send "Hello{!}{Left}^+{Left}"
+  sendtext "Hello~211"
+   a :="
+   (Join`s
+       aa
+       bb
+       cc
+   )"
+   Send a
+}
+
 }
 ```
 
@@ -158,11 +174,15 @@ alert(x) ;函數名稱與(不可有空白
 
 #HotIf
 ^a::MsgBox "not in notepad"
+
+#HotIf GetKeyState("Ctrl")
+Space & CapsLock::
+CapsLock & Space::MsgBox "Success!"
 ```
 
 #### 問題
 ```
-- 差別 ahk_class 
+- 差別 ahk_class ahk_exe ahk_pid
 - 差別 WinActive WinExist
 ```
 
