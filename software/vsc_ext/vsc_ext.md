@@ -5,6 +5,7 @@
 - [官方教學](https://code.visualstudio.com/api)
 - [vsc_ext_SAMPLES](https://github.com/microsoft/vscode-extension-samples)
 - [vse](https://code.visualstudio.com/api/get-started/your-first-extension)
+- [API-window](https://code.visualstudio.com/api/references/vscode-api#window)
 
 ---
 #### 基本架構
@@ -172,10 +173,128 @@
   
 #### 練習 data storage
 
+```
+	console.log('Congratulations, your extension "vse-hw1" is now active!');
+	const storagePath = context.storageUri?.path;
+	const storagePathCase = (context.storageUri as vscode.Uri).path;
+	const globalStoragePath = context.globalStorageUri.path;
+	console.log('storagePath',storagePath);
+	console.log('storagePathCase',storagePathCase);
+	console.log('globalStoragePath',globalStoragePath);
+	const logurl = context.logUri;
+	console.log('logurl',logurl.path);
+	context.environmentVariableCollection.append("taichimanA","taichimanValueA");
+	context.environmentVariableCollection.prepend('taichimanB', 'taichimanValueB');
+	context.environmentVariableCollection.forEach((variable, mutator, collection) => {
+		console.log(variable, mutator);
+	});
+	console.log('end');
+  -- echo ${taichimanA}
+  -- echo %taichimanA%
+```
+---
+
+#### 練習 StatusBar
+
+```
+	//satusBar
+	const itemCommandId = "vse-hw1.statusBarItem";
+
+	let item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left,110000);
+	item.text="[taichiman][item]-ori";
+	item.command = itemCommandId;
+	item.show();
+
+	let i=1;
+	const updatItem = vscode.commands.registerCommand(itemCommandId,()=>{
+		item.text = "[taichiman][item]-updated="+i;
+		i=i+1;
+	});
+```
+```
+	const dropdown = async (dropdownItems: string[]) => await vscode.window.showQuickPick(dropdownItems, {
+		canPickMany: false,
+		placeHolder: `Select your git action`,
+	});
+
+const git = new MockGit();
+	const updatItem = vscode.commands.registerCommand(itemCommandId,async ()=>{
+		//item.text = "[taichiman][item]-updated="+i;
+		//i=i+1;
+		const answer = await dropdown([
+			'Create new branch',
+			'aaa','bbb','ccc',
+			...git.branch()
+		]) || '';
+		vscode.window.showInformationMessage(answer);
+	});
+
+class MockGit {
+
+	private head = 0;
+
+	private branchs = ['day10-master'];
+	
+	public get currentBranch() {
+		return this.branchs[this.head];
+	}
+
+	public checkout(branchName: string) {
+        this.head = this.branchs.findIndex(n => n === branchName);
+        return this.currentBranch;
+	}
+
+	public branch(newBranch?: string) {
+		if(newBranch) {
+			this.branchs.push(newBranch);
+		}
+		return this.branchs;
+	}
+}
+```
+---
+#### window.nameSpace
+
+- 狀態欄物件： vscode.window.createStatusBarItem
+- 使用者輸入框: vscode.window.showInputBox
+- 下拉選單: vscode.window.showQuickPick
+- 通知訊息：vscode.window.showInformationMessage
+
+- window namespace的api分為三部分
+  - Varialbe
+  ```
+  const terminal = vscode.window.activeTerminal;
+  terminal?.sendText('git branch');
+  ```
+  - Event
+  ```
+  let terminal = vscode.window.activeTerminal;
+
+  vscode.window.onDidChangeActiveTerminal((activeTerminal) => {
+    terminal = activeTerminal;
+  });
+  ```
+  - Function
+  ```
+  const input = vscode.window.createInputBox();
+  input.prompt = 'Enter your message';
+  input.title = 'message title';
+  input.value = 'default value';
+  input.onDidChangeValue((value) => {
+      vscode.window.showInformationMessage(`changed value: ${value}`);
+  });
+  input.onDidAccept((value) => {
+      input.hide();
+  });
+  input.show();
+  ```
 
 
 
 
+
+
+---
 - 練習的專案
   - 檔案結構
   ```
