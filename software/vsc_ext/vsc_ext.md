@@ -6,6 +6,9 @@
 - [vsc_ext_SAMPLES](https://github.com/microsoft/vscode-extension-samples)
 - [vse](https://code.visualstudio.com/api/get-started/your-first-extension)
 - [API-window](https://code.visualstudio.com/api/references/vscode-api#window)
+- [ithome-自己用的工具自己做! 30天玩轉VS Code Extension之旅](https://ithelp.ithome.com.tw/articles/10240741)
+- [marketPlace](https://marketplace.visualstudio.com/)
+- [vscode-docs-release](https://github.com/microsoft/vscode-docs/tree/vnext/release-notes)
 
 ---
 #### 基本架構
@@ -64,6 +67,10 @@
   - 安裝 yoman
     ```
     npm install -g yo generator-code
+    ```
+    - 產生Extension專案
+    ```
+    yo code
     ```
 ---
 
@@ -289,8 +296,67 @@ class MockGit {
   input.show();
   ```
 
+---
+#### 練習 TreeView
 
+- package.json
+```
+   "views": {
+      "explorer": [
+        {
+          "id": "taichiTreeViewId",
+          "name": "taichiTreeViewNM",
+          "contextualTitle": "contextTitle"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "taichiTreeViewId",
+        "contents": "welcome to taichiTreeView\n gogogo\n[按我看看](command:vse-hw1-treeview.viewBtn)"
+      }
+    ]
+```
 
+- extension.ts
+```
+class TreeViewItem extends vscode.TreeItem{
+	constructor(label: string, collapsibleState?: vscode.TreeItemCollapsibleState) {
+		super(label, collapsibleState);
+	}
+}
+class DataProvider implements vscode.TreeDataProvider<TreeViewItem>{
+	getTreeItem(element: TreeViewItem): vscode.TreeItem | Thenable<vscode.TreeItem> {
+		return element;
+	}
+	getChildren(element?: TreeViewItem): vscode.ProviderResult<TreeViewItem[]> {
+		return Promise.resolve([
+			new TreeViewItem('TreeItem-01'),
+			new TreeViewItem('TreeItem-02'),
+			new TreeViewItem('TreeItem-03'),
+		]);
+	}
+}
+
+export function activate(context: vscode.ExtensionContext) {
+  let cmd5 = vscode.commands.registerCommand('vse-hw1-treeview.viewBtn',()=>{
+		vscode.window.registerTreeDataProvider('taichiTreeViewId', new DataProvider());
+		vscode.window.showInformationMessage('Create taichiTreeViewId!');	
+		vscode.window.showInformationMessage('[taichi]vse-hw1-treeview.viewBtn!');
+	});
+
+	context.subscriptions.push(cmd1,cmd2,cmd3,cmd4,item,updatItem,cmd5);
+}
+```
+----
+#### 練習 showInputBox
+```
+			var opt = {
+				placeHolder: "default: %d:0:1",
+				prompt: "Input format or format:start:step"
+			};
+			var input = vscode.window.showInputBox(opt);
+``` 
 
 
 
