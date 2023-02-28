@@ -72,6 +72,11 @@
     ```
     yo code
     ```
+    - 產生vsix
+    ```
+    npm install -g @vscode/vsce
+    vsce package
+    ```
 ---
 
 #### Commands
