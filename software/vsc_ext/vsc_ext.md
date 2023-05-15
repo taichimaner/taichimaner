@@ -9,6 +9,7 @@
 - [ithome-自己用的工具自己做! 30天玩轉VS Code Extension之旅](https://ithelp.ithome.com.tw/articles/10240741)
 - [marketPlace](https://marketplace.visualstudio.com/)
 - [vscode-docs-release](https://github.com/microsoft/vscode-docs/tree/vnext/release-notes)
+- npm install -g @vscode/vsce
 
 ---
 #### 基本架構
