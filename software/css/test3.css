@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 1px solid #000;
+}
+body{
+    background:rgb(261,251,81);
+}
+.cup{
+    width: 230px;
+    height: 350px;
+    background:#fff;
+    opacity: .6;
+    border-radius: 0 0 20px 20px;
+    position: absolute; 
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: auto;
+    z-index: 3;
+}
+.beer{
+    width: 200px;
+    height: 300px;
+    background: #ffc018;
+    left:0;
+    right:0;
+    margin: auto;
+    border-radius: 0 0 20px 20px;
+    z-index: 2;
+}
+.ear{
+    width: 55px;
+    height: 150px;
+    position: absolute;
+    top: 60px;
+    right: -40px;
+    background: transparent;
+    border: 5px solid #fff;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.top{
+    width: 200px;
+    height: 60px;
+    background: #fff;
+    opacity: .9;
+}
+.topcircle{
+    border-radius: 50%;
+    position: absolute;
+}
+.top1{
+    width: 50px;
+    height: 50px;
+    top:-10px;
+}
+.top2{
+    width: 60px;
+    height: 60px;
+    top:   -20px;
+    left:60px;
+}

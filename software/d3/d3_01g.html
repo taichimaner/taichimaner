@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="d3_01g.css" />
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <button class="btn" id="clickA">ClickA</button>
+  </body>
+  <script type="module">
+    import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+    function drawSVG() {
+      d3.select("#container #svg1").remove();
+      const svgW = parseInt(d3.select("#container").style("width")),
+        svgH = svgW * 0.8,
+        margin = 30,
+        bandWidth = 20;
+
+      const svg = d3
+        .create("svg")
+        .attr("id", "svg1")
+        .attr("width", svgW)
+        .attr("height", svgH)
+        .style("background-color", "lightgrey");
+
+      var dataset = [31, 64, 42, 28, 16, 32, 64, 10];
+      const len_dataset = dataset.length;
+      const id_circle = svg.append("g").attr("id", "id_circle");
+      const themax = d3.max(dataset);
+      const themin = d3.min(dataset);
+      const thesum = themax + themin;
+
+      const zoom = d3
+        .zoom()
+        // 用 on 來監聽縮放事件啟動後，要進行什麼動作
+        .on("zoom", function (event, v, a) {
+          //這邊決定要放大誰，我想放大circle
+          console.info(v, event);
+          console.info("args", arguments.length),
+            id_circle.attr("transform", event.transform);
+        });
+      const drag = d3
+        .drag()
+        .on("start", function () {
+          d3.select(this).style("stroke", "blue").style("stroke-width", "5px");
+        })
+        .on("drag", function () {
+          let pt = d3.pointer(event, this);
+          d3.select(this).attr("cx", pt[0]).attr("cy", pt[1]);
+        })
+        .on("end", function () {
+          d3.select(this).style("stroke", "#b3a2c8");
+        });
+      const circles = id_circle
+        .selectAll("g > .circle")
+        .data(dataset)
+        .join("circle")
+        // .join(
+        //   (enter) => enter.append("g").attr("class", "circle").append("circle"),
+        //   (update) => update,
+        //   (exit) => exit.remove
+        // )
+        .each((d) => {
+          console.info("d", d);
+        })
+        .attr("clsss", "circle")
+        .attr("cx", (d, i) => (svgW * (i + 1)) / (len_dataset + 1))
+        .attr("cy", (d, i) => (svgH * (i + 1)) / (len_dataset + 1))
+        .attr("r", (d) => d)
+        .attr("cursor", "pointer")
+        .style("fill", "#555555")
+        // .call(zoom)
+        .call(drag);
+      // circles.on("click", function (evt, i, all) {
+      //   console.info("click", this);
+      //   console.info("evt", evt);
+      //   console.info("i", i);
+      //   console.info("all", all);
+
+      //   d3.select(this).transition().duration(2000).style("fill", "green");
+      // });
+      circles
+        .on("click", (d) => {
+          d3.select(d.target)
+            .transition()
+            .duration(2000)
+            .style("fill", "green");
+        })
+        .on("mousemove", (d) => {
+          console.info(d, d.target);
+          let pt = d3.pointer(d, d.target);
+          svg
+            .selectAll(".textCursor")
+            .data([1])
+            .join(
+              (enter) => enter.append("text"),
+              (update) => update,
+              (exit) => exit.remove()
+            )
+            .attr("x", 10)
+            .attr("y", 10)
+            .attr("class", "textCursor")
+            .text(`x=${pt[0]},y=${pt[1]}`);
+          console.info("pt", pt);
+        })
+        .on("mouseover", (d) => {
+          console.info(d, d.target);
+          let pt = d3.pointer(d, d.target);
+          svg
+            .selectAll(".textCursor")
+            .data([1])
+            .join(
+              (enter) => enter.append("text"),
+              (update) => update,
+              (exit) => exit.remove()
+            )
+            .attr("x", 10)
+            .attr("y", 10)
+            .attr("class", "textCursor")
+            .text(`x=${pt[0]},y=${pt[1]}`);
+          console.info("pt", pt);
+        })
+        .on("mouseleave", (d) => {
+          console.info(d, d.target);
+          svg.selectAll(".textCursor").data([1]).remove();
+        });
+      console.info("circles", circles);
+      console.info("data", circles.datum());
+
+      const linedata = [
+        [111, 212],
+        [222, 323],
+        [255, 636],
+      ];
+      const line = d3
+        .line()
+        .x((d) => d[0])
+        .y((d) => d[1]);
+
+      const theline = svg
+        .selectAll(".line")
+        .data([1])
+        .enter()
+        .append("g")
+        .attr("id", "theline")
+        .append("path")
+        .attr("class", "line")
+        .attr("d", line(linedata))
+        .attr("stroke-width", "5px");
+      console.info("theline", theline);
+      // svg.call(zoom);
+      container.append(svg.node());
+
+      document.querySelector("#clickA").addEventListener("click", function () {
+        circles
+
+          .transition()
+          .duration(2000)
+
+          .delay((d, i) => i * 200) //
+          .style("fill", "green")
+          .attr("transform", "translate(140, 60)");
+      });
+    }
+    drawSVG();
+    d3.select(window).on("resize", drawSVG);
+  </script>
+</html>

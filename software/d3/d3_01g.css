@@ -1,0 +1,12 @@
+.container{
+    width:90%;
+    min-width: 300px;
+    outline: 1px solid red;
+}
+.btn{
+    width: 60px;
+    height: 40px;
+    border-radius: 20%;
+    background-color: rgb(29, 151, 238);
+    color:white;
+}

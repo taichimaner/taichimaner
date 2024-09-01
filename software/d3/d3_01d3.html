@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+<div id="container"></div>
+</div>
+</body>
+<script type="module">
+
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+const svg_w = 1000;
+const svg_h = 1000;
+const svg = d3.create("svg")
+    .attr('id','svg1')
+    .attr("width", svg_w)
+    .attr("height", svg_h)
+    .style('background-color', 'lightgrey');
+
+
+
+var dataset = [31, 64, 42, 28, 16, 32, 64, 10];
+const len_dataset = dataset.length;
+const bar_chart = svg.append('g')
+   .attr('id','bar_chart');
+const themax=d3.max(dataset);
+const themin=d3.min(dataset);
+const thesum=themax+themin;
+
+bar_chart.selectAll('.bar')
+   .data(dataset)
+   .enter()
+   .append('g')
+   .attr('class','bar')
+   .append('rect')
+   .attr('x',(v,i)=>svg_w/len_dataset*i)
+   .attr('y',(val)=>svg_h-val*svg_h/thesum)
+   .attr('width',svg_w/(len_dataset+1))
+   .attr('height',(val)=>val*svg_h/thesum)
+   .style('fill','#0000aa')
+   ;
+ 
+
+   
+
+container.append(svg.node());
+
+</script>
+</html>

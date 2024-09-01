@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 1px solid #000;
+}
+
+.r1{
+    width: 100px;
+    height: 100px;
+    background: #f00;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    margin: auto;
+    position: absolute;
+    border-radius:100% 0 100px 1px/100% 0 100px 1px;
+}

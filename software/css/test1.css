@@ -1,0 +1,15 @@
+div#a1{
+    width: 100px;
+    height: 100px;
+    background: #000;
+}
+div#a2{
+    outline: 1px solid red;
+    position: absolute;
+    width: 70px;
+}
+span{
+    color:red;
+    top:20px;
+    position:fixed;
+}
