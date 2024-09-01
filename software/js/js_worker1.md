@@ -85,77 +85,77 @@ worker.onmessageerror = function (event){
 console.info('=====end====');
 // worker.terminate();
 ```
-  - myworker11.js
-  '''
-  const code1 = `(function () {
-    function delayf(ms,src){
-      const currentTime = new Date().getTime();
-      let i = 0;
-      while(currentTime + ms >= new Date().getTime()){
-        i++;
-        if(i%10000000 == 0){
-          console.info('           rows processed:' + i,src);
-        }
+- myworker11.js
+```
+const code1 = `(function () {
+  function delayf(ms,src){
+    const currentTime = new Date().getTime();
+    let i = 0;
+    while(currentTime + ms >= new Date().getTime()){
+      i++;
+      if(i%10000000 == 0){
+        console.info('           rows processed:' + i,src);
       }
-    };
-    function printlog(msg){
-      console.info('printlog',msg);
-    };
-    self.onmessage = function (event){
-        console.log('[worker][onmessage]',event.data);
-        const {wname} = event.data;
-        const {act} = event.data;
-        const {bcode11} = event.data;
-        console.info('=bcode11',bcode11);
-        if('Y' != act){
-          console.info('[關閉WORKER]',event.data);
-          self.close();
-        }
-        const worker2 = new Worker(bcode11);
-        console.info('worker2',worker2);
-        worker2.postMessage({'wname':'WORKA','act':'Y'});
-        //throw new Error('====this is errorrrrrr=====');
-        //delayf(5000,event.data);
-        //printlog(event.data);
-        self.postMessage('===[worker][postMessage]');
     }
-    self.onerror = function(event){
-      console.info('[worker][onerror]',event);
-      console.info('#關閉WORKER#[因為ERROR]',event);
-      self.close();
-    }
-  })();`;
-
-  const code11 = `(function () {
-    function printlog(msg){
-      console.info('printlog',msg);
-    };
-    function delayf(ms,src){
-      const currentTime = new Date().getTime();
-      let i = 0;
-      while(currentTime + ms >= new Date().getTime()){
-        i++;
-        if(i%10000000 == 0){
-          console.info('           rows processed:' + i,src);
-        }
-      }
-    };
-    self.onmessage = function (event){
-        console.log('[worker2][onmessage]',event.data);
-        delayf(5000,event.data);
-        self.postMessage('===[worker2][postMessage]');
-        self.close();
-    }
-    self.onerror = function(event){
-      console.info('[worker][onerror]',event);
-      console.info('#關閉WORKER2#[因為ERROR]',event);
-      self.close();
-    }
-  })();`;
-
-  const createBlobObjectURL = (item) => {
-    const blob = new Blob([`${item}`], { type: "text/javascript" });
-    const url = URL.createObjectURL(blob);
-    return url;
   };
-  '''
+  function printlog(msg){
+    console.info('printlog',msg);
+  };
+  self.onmessage = function (event){
+      console.log('[worker][onmessage]',event.data);
+      const {wname} = event.data;
+      const {act} = event.data;
+      const {bcode11} = event.data;
+      console.info('=bcode11',bcode11);
+      if('Y' != act){
+        console.info('[關閉WORKER]',event.data);
+        self.close();
+      }
+      const worker2 = new Worker(bcode11);
+      console.info('worker2',worker2);
+      worker2.postMessage({'wname':'WORKA','act':'Y'});
+      //throw new Error('====this is errorrrrrr=====');
+      //delayf(5000,event.data);
+      //printlog(event.data);
+      self.postMessage('===[worker][postMessage]');
+  }
+  self.onerror = function(event){
+    console.info('[worker][onerror]',event);
+    console.info('#關閉WORKER#[因為ERROR]',event);
+    self.close();
+  }
+})();`;
+
+const code11 = `(function () {
+  function printlog(msg){
+    console.info('printlog',msg);
+  };
+  function delayf(ms,src){
+    const currentTime = new Date().getTime();
+    let i = 0;
+    while(currentTime + ms >= new Date().getTime()){
+      i++;
+      if(i%10000000 == 0){
+        console.info('           rows processed:' + i,src);
+      }
+    }
+  };
+  self.onmessage = function (event){
+      console.log('[worker2][onmessage]',event.data);
+      delayf(5000,event.data);
+      self.postMessage('===[worker2][postMessage]');
+      self.close();
+  }
+  self.onerror = function(event){
+    console.info('[worker][onerror]',event);
+    console.info('#關閉WORKER2#[因為ERROR]',event);
+    self.close();
+  }
+})();`;
+
+const createBlobObjectURL = (item) => {
+  const blob = new Blob([`${item}`], { type: "text/javascript" });
+  const url = URL.createObjectURL(blob);
+  return url;
+};
+```
