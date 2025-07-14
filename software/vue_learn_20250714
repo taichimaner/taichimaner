@@ -21,8 +21,12 @@ https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme
 
 https://git-scm.com/
 git 用預設安裝即可(Next)*11==>Finish
+
+
 Font Family
 'Cascadia Code',Consolas, 'Courier New', monospace
 
 terminal.integrated.fontsize
 24
+
+create vue_labs and open as vscode
