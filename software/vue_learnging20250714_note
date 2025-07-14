@@ -1,4 +1,6 @@
 ---2025-07-14
+講師推薦的字型設定如下，另外有推薦 Source CODE PRO 字型
+
 settings.json
 {
     "workbench.iconTheme": "material-icon-theme",
@@ -6,3 +8,5 @@ settings.json
     "editor.fontFamily": "'Cascadia Code',Consolas, 'Courier New', monospace",
     "terminal.integrated.fontSize": 24
 }
+
+
