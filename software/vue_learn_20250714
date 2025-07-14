@@ -60,3 +60,54 @@ lab1/index.html
 
 serve .
 http://localhost:3000/lab1/
+
+
+app.js
+const button1 = document.querySelector('button')
+const input1 = document.querySelector('input')
+const list1 = document.querySelector('ul')
+function addPlan() {
+    const value = input1.value
+    const item = document.createElement('li')
+    item.textContent = value
+    list1.appendChild(item)
+}
+button1.addEventListener('click', addPlan)
+
+index.html
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <label for="plan">Plan</label>
+    <input type="text" id="plan" />
+    <button>Add Plan</button>
+    <ul>
+    </ul>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~
+(if you want to debug)
+const button1 = document.querySelector('button')
+const input1 = document.querySelector('input')
+const list1 = document.querySelector('ul')
+function addPlan() {
+    const value = input1.value
+    const item = document.createElement('li')
+    item.textContent = value
+    list1.appendChild(item)
+    console.log(value)
+}
+button1.addEventListener('click', addPlan)
