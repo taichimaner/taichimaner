@@ -30,3 +30,33 @@ terminal.integrated.fontsize
 24
 
 create vue_labs and open as vscode
+
+
+lab1/index.html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <label for="plan">Plan</label>
+    <input type="text" id="plan" />
+    <button>Add Plan</button>
+    <ul>
+    </ul>
+    <script src="" async defer></script>
+</body>
+
+</html>
+
+
+
+serve .
+http://localhost:3000/lab1/
