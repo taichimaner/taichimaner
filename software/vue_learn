@@ -1,0 +1,19 @@
+1. 註冊firebase/google免費帳號
+2. 註冊git account(FREE)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://nodejs.org/en/about/previous-releases
+
+open a cmd
+node --version
+npm --version
+npm install -g npm
+npm list -g
+npm install -g @vue/cli
+npm install -g serve
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+update vs code
+
+https://marketplace.visualstudio.com/items?itemName=Vue.volar
+https://marketplace.visualstudio.com/items?itemName=sidthesloth.html5-boilerplate
+https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets
+https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph
