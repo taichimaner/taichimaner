@@ -10,3 +10,8 @@ settings.json
 }
 
 
+---hotkey
+ctrl+k,ctrl+o =>open folder
+ctrl + space 顯示提示
+alt + shift + f 排版(滑鼠須點在source code 中)
+
