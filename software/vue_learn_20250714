@@ -130,3 +130,264 @@ function addPlan() {
 }
 button1.addEventListener('click', addPlan)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+create a directory lab2
+
+lab2\index.html
+lab2\app.js
+
+https://vuejs.org/guide/quick-start
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <label for="plan">Plan</label>
+    <input type="text" id="plan" />
+    <button>Add Plan</button>
+    <ul>
+    </ul>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+
+Vue.createApp().mount('#myapp');
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data(){
+        return {}
+    },
+    methods:{
+        
+    }
+}).mount('#myapp');
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data(){
+        return {
+            plans:[],
+            value:''
+        }
+    },
+    methods:{
+        addPlan(){
+            this.plans.push(this.value)
+        }
+    }
+}).mount('#myapp');
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data(){
+        return {
+            plans:[],
+            value:''
+        }
+    },
+    methods:{
+        addPlan(){
+            this.plans.push(this.value)
+        }
+    }
+}).mount('#myapp');
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div id="myapp">
+        <label for="plan">Plan</label>
+        <input type="text" id="plan" v-model="value" />
+        <button v-on:click="addPlan">Add Plan</button>
+        <ul>
+            <li v-for="p in plans">{{p}}</li>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const {createApp} = Vue 
+createApp({
+    data(){
+        return {
+            plans:[],
+            value:''
+        }
+    },
+    methods:{
+        addPlan(){
+            this.plans.push(this.value)
+            this.value=""
+        }
+    }
+}).mount('#myapp');
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+index.html ==> copy from lab2
+app.js
+
+const {createApp} = Vue 
+createApp({
+    setup(){
+        console.log("vue object會在此創建")
+    }
+}).mount('#myapp')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const {createApp, ref} = Vue 
+createApp({
+    setup(){
+        console.log("vue object會在此創建")
+        const plans = ref([])
+        const value = ref('')
+        function addPlan() {}
+        return {
+            plans:plans,
+            value:value,
+            addPlan:addPlan
+        }
+    }
+}).mount('#myapp')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+check f12, should no warning!!!
+
+const {createApp, ref} = Vue 
+createApp({
+    setup(){
+        console.log("vue object會在此創建")
+        const plans = ref([])
+        const value = ref('')
+        setTimeout(()=>{
+            plans.value.push("HAHA")
+            setTimeout(()=>{
+                plans.value.push("HAHAHA")
+            },3000)
+        },3000)
+        function addPlan() {}
+        return {
+            plans:plans,
+            value:value,
+            addPlan:addPlan
+        }
+    }
+}).mount('#myapp')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const { createApp, ref } = Vue
+createApp({
+    setup() {
+        console.log("vue object會在此創建")
+        const plans = ref([])
+        const value = ref('')
+        function addPlan() {
+            plans.value.push(value.value)
+            value.value = ""
+        }
+        return {
+            plans: plans,
+            value: value,
+            addPlan: addPlan
+        }
+    }
+}).mount('#myapp')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mkdir lab4
+copy index.html, app.js from lab2 to lab4
+
+https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div id="myapp">
+        <label for="plan">Plan</label>
+        <input type="text" id="plan" v-model="value" />
+        <button v-on:click="addPlan">Add Plan</button>
+        <ul>
+            <li v-for="p in plans">{{p}}</li>
+        </ul>
+    </div>
+
+    <script  src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script  src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+
+var vue = new Vue({
+    el: '#myapp',
+    data() {
+        return {
+            plans: [],
+            value: ''
+        }
+    },
+    methods: {
+        addPlan() {
+            this.plans.push(this.value)
+            this.value = ""
+        }
+    }
+})
+~~~~~~~~~~~~~~~~~~~~~
+
+http://localhost:3000/lab2/
+
+
+https://vuejs.org/guide/quick-start#using-vue-from-cdn
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <section id="my-planner">
+            <h2>My yearly plan</h2>
+            <p></p>
+        </section>
+        <script src="app.js" async defer></script>
+    </body>
+</html>
