@@ -1,0 +1,8 @@
+---2025-07-14
+settings.json
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontSize": 24,
+    "editor.fontFamily": "'Cascadia Code',Consolas, 'Courier New', monospace",
+    "terminal.integrated.fontSize": 24
+}
