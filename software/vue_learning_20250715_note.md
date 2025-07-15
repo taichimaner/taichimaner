@@ -25,4 +25,8 @@ sequenceDiagram
     S->>B: response
 ```
 
+- two way binding
+- ```v-on``` 可縮寫為 ```@```
+- ```v-model```
+
 
