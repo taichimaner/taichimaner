@@ -13,14 +13,14 @@ HTML<--DOM-->vdom["vdom(virtual dom)"];
 sequenceDiagram
     participant B as Browser
     participant S as Server
-    B->>S: req
+    B->>S: req (只有第一次req取得結構)
+    S->>B: response
+    B-->>S: ajax(之後都是ajax溝通)
+    S-->>B: response
+    B-->>S: ajax
+    S-->>B: response
+    B-->>S: ajax
     S-->>B: response
 ```
-- 之後都是 ajax
 
-```mermaid 
-sequenceDiagram
-    Browser->>Server: ajax
-    Server-->>Browser: response
-```
 
