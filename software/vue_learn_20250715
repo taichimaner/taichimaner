@@ -607,3 +607,1061 @@ html
 </body>
 
 </html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>two way binding!</h1>
+    <section id="app">
+        <!-- <input type="text" @input="setIssue" v-bind:value="issue"> -->
+         <input type="text" @input="setIssue" :value="issue">
+        <p>your issue is:{{issue}}</p>
+        <button @click="resetIssue">clear issue</button>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>two way binding!</h1>
+    <section id="app">
+        <!-- <input type="text" @input="setIssue" v-bind:value="issue"> -->
+        <!-- <input type="text" @input="setIssue" :value="issue"> -->
+        <!-- 簡化成 two way binding, 就不需要callback function -->
+        <input type="text" v-model="issue" />
+        <p>your issue is:{{issue}}</p>
+        <button @click="resetIssue">clear issue</button>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            issue: 'default issue'
+        }
+    },
+    methods: {
+        resetIssue() {
+            this.issue = ''
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+
+const app = Vue.createApp({
+    data() {
+        return {
+            issue: 'default issue',
+            counter: 0
+        }
+    },
+    methods: {
+        outputMessage() {
+            console.log("計算outputMessage", this.issue)
+            if (this.issue === "") {
+                return ""
+            }
+            return `[!!]${this.issue}`
+        },
+        resetIssue() {
+            this.issue = ''
+        },
+        increase() {
+            this.counter += 1;
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>two way binding!</h1>
+    <section id="app">
+        <input type="text" v-model="issue" />
+        <p>your issue is:{{issue}}</p>
+        <p>counter={{counter}}</p>
+        <p>{{outputMessage()}}</p>
+        <button @click="resetIssue">clear issue</button>
+        <button @click="increase">+1</button>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+
+const app = Vue.createApp({
+    data() {
+        return {
+            issue: 'default issue',
+            counter: 0
+        }
+    },
+    methods: {
+
+        resetIssue() {
+            this.issue = ''
+        },
+        increase() {
+            this.counter += 1;
+        }
+    },
+    computed: {
+        formatIssue() {
+            console.log("計算formatIssue", this.issue)
+            if (this.issue === "") {
+                return ""
+            }
+            return `[!!]${this.issue}`
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>two way binding!</h1>
+    <section id="app">
+        <input type="text" v-model="issue" />
+        <p>your issue is:{{issue}}</p>
+        <p>counter={{counter}}</p>
+        <p>{{formatIssue}}</p>
+        <button @click="resetIssue">clear issue</button>
+        <button @click="increase">+1</button>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            issue: 'default issue',
+            counter: 0
+        }
+    },
+    methods: {
+
+        resetIssue() {
+            this.issue = ''
+        },
+        increase() {
+            this.counter += 1;
+        }
+    },
+    computed: {
+        formatIssue() {
+            console.log("計算formatIssue", this.issue)
+            if (this.issue === "") {
+                return ""
+            }
+            return `[!!]${this.issue}`
+        }
+    },
+    watch: {
+        counter(v) {
+            if (v > 10) {
+                this.counter = 0;
+                console.log("counter reset")
+            }
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+copy lab7 lab8
+
+app.js
+
+const app = Vue.createApp({
+    data() {
+        return {
+            issue: 'default issue',
+            counter: 0,
+            formatIssue: ''
+        }
+    },
+    methods: {
+
+        resetIssue() {
+            this.issue = ''
+        },
+        increase() {
+            this.counter += 1;
+        }
+    },
+    // computed: {
+    //     formatIssue() {
+    //         console.log("計算formatIssue", this.issue)
+    //         if (this.issue === "") {
+    //             return ""
+    //         }
+    //         return `[!!]${this.issue}`
+    //     }
+    // },
+    watch: {
+        issue(v, oldV) {
+            console.log(`計算formatIssue, new=${v},old=${oldV}`)
+            if (this.issue === "") {
+                this.formatIssue = ""
+            }
+            this.formatIssue = `[!!]${v} from ${oldV}`
+        },
+        counter(v) {
+            if (v > 10) {
+                this.counter = 0;
+                console.log("counter reset")
+            }
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+create lab9
+styles.css
+
+.demo {
+    width: calc(80% - 32px);
+    height: 80px;
+    margin: 12px;
+    border: 4px dashed #CCC;
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+index.html
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <div class="demo">Mountain</div>
+        <div class="demo">Ocean</div>
+        <div class="demo">Sun</div>
+    </section>
+    <script src="" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+const app = Vue.createApp({
+    data() {
+        return {
+            div1Selected: false,
+            div2Selected: false,
+            div3Selected: false
+        }
+    },
+    methods: {
+        divSelected(divId) {
+            if (divId === 1) {
+                this.div1Selected = true
+            } else if (divId === 2) {
+                this.div2Selected = true
+            } else if (divId === 3) {
+                this.div3Selected = true
+            }
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <div class="demo" style="border-color:green ;" @click="divSelected(1)">Mountain</div>
+        <div class="demo" style="border-color:blue ;" @click="divSelected(2)">Ocean</div>
+        <div class="demo" style="border-color:red ;" @click="divSelected(3)">Sun</div>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <div class="demo" :style="{borderColor:div1Selected?'green':'#CCC'}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :style="{borderColor:div2Selected?'blue':'#CCC'}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :style="{borderColor:div3Selected?'red':'#CCC'}" @click="divSelected(3)">Sun</div>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.demo {
+    width: calc(80% - 32px);
+    height: 80px;
+    margin: 12px;
+    border: 4px dashed #CCC;
+}
+
+.is1Selected {
+    border-color: green;
+    background-color: #C0FFEE;
+}
+
+.is2Selected {
+    border-color: blue;
+    background-color: #C0EEFF;
+}
+
+.is3Selected {
+    border-color: red;
+    background-color: #FFC0EE;
+}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <!-- <div class="demo" :style="{borderColor:div1Selected?'green':'#CCC'}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :style="{borderColor:div2Selected?'blue':'#CCC'}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :style="{borderColor:div3Selected?'red':'#CCC'}" @click="divSelected(3)">Sun</div> -->
+        <div :class="div1Selected?'demo is1Selected':'demo'"  @click="divSelected(1)">Mountain</div>
+        <div :class="div2Selected?'demo is2Selected':'demo'"  @click="divSelected(2)">Ocean</div>
+        <div :class="div3Selected?'demo is3Selected':'demo'"  @click="divSelected(3)">Sun</div>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <!-- <div class="demo" :style="{borderColor:div1Selected?'green':'#CCC'}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :style="{borderColor:div2Selected?'blue':'#CCC'}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :style="{borderColor:div3Selected?'red':'#CCC'}" @click="divSelected(3)">Sun</div> -->
+        <!-- <div :class="div1Selected?'demo is1Selected':'demo'"  @click="divSelected(1)">Mountain</div>
+        <div :class="div2Selected?'demo is2Selected':'demo'"  @click="divSelected(2)">Ocean</div>
+        <div :class="div3Selected?'demo is3Selected':'demo'"  @click="divSelected(3)">Sun</div> -->
+
+        <div :class="{demo:true, is1Selected:div1Selected}" @click="divSelected(1)">Mountain</div>
+        <div :class="{demo:true, is2Selected:div2Selected}" @click="divSelected(2)">Ocean</div>
+        <div :class="{demo:true, is3Selected:div3Selected}" @click="divSelected(3)">Sun</div>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <!-- <div class="demo" :style="{borderColor:div1Selected?'green':'#CCC'}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :style="{borderColor:div2Selected?'blue':'#CCC'}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :style="{borderColor:div3Selected?'red':'#CCC'}" @click="divSelected(3)">Sun</div> -->
+        <!-- <div :class="div1Selected?'demo is1Selected':'demo'"  @click="divSelected(1)">Mountain</div>
+        <div :class="div2Selected?'demo is2Selected':'demo'"  @click="divSelected(2)">Ocean</div>
+        <div :class="div3Selected?'demo is3Selected':'demo'"  @click="divSelected(3)">Sun</div> -->
+
+        <!-- <div :class="{demo:true, is1Selected:div1Selected}" @click="divSelected(1)">Mountain</div>
+        <div :class="{demo:true, is2Selected:div2Selected}" @click="divSelected(2)">Ocean</div>
+        <div :class="{demo:true, is3Selected:div3Selected}" @click="divSelected(3)">Sun</div> -->
+
+        <div class="demo" :class="{is1Selected:div1Selected}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :class="{is2Selected:div2Selected}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :class="{is3Selected:div3Selected}" @click="divSelected(3)">Sun</div>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            div1Selected: false,
+            div2Selected: false,
+            div3Selected: false
+        }
+    },
+    methods: {
+        divSelected(divId) {
+            if (divId === 1) {
+                this.div1Selected = !this.div1Selected
+            } else if (divId === 2) {
+                this.div2Selected = !this.div2Selected 
+            } else if (divId === 3) {
+                this.div3Selected = !this.div3Selected
+            }
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            div1Selected: false,
+            div2Selected: false,
+            div3Selected: false
+        }
+    },
+    methods: {
+        divSelected(divId) {
+            if (divId === 1) {
+                this.div1Selected = !this.div1Selected
+            } else if (divId === 2) {
+                this.div2Selected = !this.div2Selected
+            } else if (divId === 3) {
+                this.div3Selected = !this.div3Selected
+            }
+        }
+    },
+    computed: {
+        div1Classes() { return { is1Selected: this.div1Selected } },
+        div2Classes() { return { is2Selected: this.div2Selected } },
+        div3Classes() { return { is3Selected: this.div3Selected } }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <!-- <div class="demo" :style="{borderColor:div1Selected?'green':'#CCC'}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :style="{borderColor:div2Selected?'blue':'#CCC'}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :style="{borderColor:div3Selected?'red':'#CCC'}" @click="divSelected(3)">Sun</div> -->
+        <!-- <div :class="div1Selected?'demo is1Selected':'demo'"  @click="divSelected(1)">Mountain</div>
+        <div :class="div2Selected?'demo is2Selected':'demo'"  @click="divSelected(2)">Ocean</div>
+        <div :class="div3Selected?'demo is3Selected':'demo'"  @click="divSelected(3)">Sun</div> -->
+
+        <!-- <div :class="{demo:true, is1Selected:div1Selected}" @click="divSelected(1)">Mountain</div>
+        <div :class="{demo:true, is2Selected:div2Selected}" @click="divSelected(2)">Ocean</div>
+        <div :class="{demo:true, is3Selected:div3Selected}" @click="divSelected(3)">Sun</div> -->
+
+        <div class="demo" :class="div1Classes" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :class="div2Classes" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :class="div3Classes" @click="divSelected(3)">Sun</div>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       <div :class="['demo', div1Classes]" @click="divSelected(1)">Mountain</div>
+        <div :class="['demo', div2Classes]" @click="divSelected(2)">Ocean</div>
+        <div :class="['demo', div3Classes]" @click="divSelected(3)">Sun</div>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       <div :class="['demo', {is1Selected:div1Selected}]" @click="divSelected(1)">Mountain</div>
+        <div :class="['demo', {is2Selected:div2Selected}]" @click="divSelected(2)">Ocean</div>
+        <div :class="['demo', {is3Selected:div3Selected}]" @click="divSelected(3)">Sun</div>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab10
+index.html
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <input type="text" />
+        <button>add a course</button>
+        <h3>No course</h3>
+        <ul>
+            <li>Course</li>
+        </ul>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            courses: []
+        }
+    },
+    computed: {},
+    methods: {}
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <input type="text" />
+        <button>add a course</button>
+        <h3 v-if="courses.length === 0">No course</h3>
+        <ul>
+            <li>Course</li>
+        </ul>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <input type="text" v-model="courseContent" />
+        <button @click="addCourse">add a course</button>
+        <h3 v-if="courses.length === 0">No course</h3>
+        <ul v-else>
+            <li>Course</li>
+        </ul>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            courses: [],
+            courseContent: ''
+        }
+    },
+    computed: {},
+    methods: {
+        addCourse() {
+            this.courses.push(this.courseContent)
+            this.courseContent = ''
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~
+        <h3 v-if="courses.length === 0">No course</h3>
+        <ul v-else>
+            <li>Course</li>
+        </ul>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        <h3 v-show="courses.length === 0">No course</h3>
+        <ul v-show="courses.length > 0">
+            <li>Course</li>
+        </ul>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <input type="text" v-model="courseContent" />
+        <button @click="addCourse">add a course</button>
+        <h3 v-if="courses.length === 0">No course</h3>
+        <ul v-else>
+            <li v-for="c in courses">{{c}}</li>
+        </ul>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <input type="text" v-model="courseContent" />
+        <button @click="addCourse">add a course</button>
+        <h3 v-if="courses.length === 0">No course</h3>
+        <ul v-else>
+            <li v-for="(c,index) in courses">{{index}}/{{c}}</li>
+        </ul>
+        <hr />
+        <p>iterate a object with value:</p>
+        <ul>
+            <li v-for="v in {name:'poop',duration:35,instructor:'Mark'}">{{v}}</li>
+        </ul>
+        <hr />
+        <p>iterate a object with key and value:</p>
+        <ul>
+            <li v-for="(v,k) in {name:'poop',duration:35,instructor:'Mark'}">key={{k}},value={{v}}</li>
+        </ul>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <input type="text" v-model="courseContent" />
+        <button @click="addCourse">add a course</button>
+        <h3 v-if="courses.length === 0">No course</h3>
+        <ul v-else>
+            <li v-for="(c,index) in courses" 
+            @click="removeCourse(index)">{{c}}</li>
+        </ul>
+        <hr />
+        <p>iterate a object with value:</p>
+        <ul>
+            <li v-for="v in {name:'poop',duration:35,instructor:'Mark'}"
+            >{{v}}</li>
+        </ul>
+        <hr />
+        <p>iterate a object with key and value:</p>
+        <ul>
+            <li v-for="(v,k) in {name:'poop',duration:35,instructor:'Mark'}">key={{k}},value={{v}}</li>
+        </ul>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            courses: ['poop', 'bdpy', 'pykt', 'aiocv', 'aipy'],
+            courseContent: ''
+        }
+    },
+    computed: {},
+    methods: {
+        addCourse() {
+            this.courses.push(this.courseContent)
+            this.courseContent = ''
+        },
+        removeCourse(index) {
+            this.courses.splice(index, 1)
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <input type="text" v-model="courseContent" />
+        <button @click="addCourse">add a course</button>
+        <h3 v-if="courses.length === 0">No course</h3>
+        <ul v-else>
+            <li v-for="(c,index) in courses" @click="removeCourse(index)"
+            :key="c">{{c}}
+                <input type="text" @click.stop>
+            </li>
+        </ul>
+        <hr />
+        <p>iterate a object with value:</p>
+        <ul>
+            <li v-for="v in {name:'poop',duration:35,instructor:'Mark'}">{{v}}</li>
+        </ul>
+        <hr />
+        <p>iterate a object with key and value:</p>
+        <ul>
+            <li v-for="(v,k) in {name:'poop',duration:35,instructor:'Mark'}">key={{k}},value={{v}}</li>
+        </ul>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            courses: [
+                { id: "POOP", name: "Python OOP", duration: 35 },
+                { id: "BDPY", name: "Python and Big Data", duration: 35 }
+            ],
+            detailsVisible: true
+        }
+    },
+    computed: {},
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <ul>
+            <li v-for="course in courses" :key="course.id">
+                <h2>{{course.id}}</h2>
+                <button @click="toggleCourseDetail">show detail</button>
+                <ul v-if="detailsVisible">
+                    <li>{{course.name}}</li>
+                    <li>{{course.detail}}</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            courses: [
+                { id: "POOP", name: "Python OOP", duration: 35 },
+                { id: "BDPY", name: "Python and Big Data", duration: 35 }
+            ],
+            detailsVisible: true
+        }
+    },
+    computed: {},
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+})
+app.component("course-content", {
+    template: `
+    <h1>Course Content</h1>
+    `, data() {
+        return {
+            detailsVisible: true,
+            course: { id: "POOP", name: "Python OOP", duration: 35 }
+        }
+    }, methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <ul>
+            <li v-for="course in courses" :key="course.id">
+                <h2>{{course.id}}</h2>
+                <button @click="toggleCourseDetail">show detail</button>
+                <ul v-if="detailsVisible">
+                    <li>{{course.name}}</li>
+                    <li>{{course.duration}}</li>
+                </ul>
+            </li>
+            <course-content></course-content>
+            <course-content></course-content>
+        </ul>
+        
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            courses: [
+                { id: "POOP", name: "Python OOP", duration: 35 },
+                { id: "BDPY", name: "Python and Big Data", duration: 35 }
+            ],
+            detailsVisible: true
+        }
+    },
+    computed: {},
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+})
+app.component("course-content", {
+    template: `
+    <li>
+        <h2>{{course.id}}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <ul v-if="detailsVisible">
+            <li>{{course.name}}</li>
+            <li>{{course.duration}}</li>
+        </ul>
+    </li>
+    `, data() {
+        return {
+            detailsVisible: true,
+            course: { id: "POOP", name: "Python OOP", duration: 35 }
+        }
+    }, methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <ul>
+            <course-content></course-content>
+            <course-content></course-content>
+        </ul>
+        
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
