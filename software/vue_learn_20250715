@@ -1,1 +1,609 @@
+cd c:\Users\Admin\vue_labs
+serve .
+https://vuejs.org/guide/essentials/lifecycle
 
+https://mermaid.js.org/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: 'expeceted to...'
+        }
+    },
+    methods: {
+        setToDo(e) {
+            this.todo = e.target.value;
+        },
+        increase1(step) {
+            this.counter1 = this.counter1 + step
+        },
+        decrease1: function (step) {
+            this.counter1 = this.counter1 - step
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="increase1(1)">+1</button>
+        <button v-on:click="decrease1(1)">-1</button>
+        <button v-on:click="increase1(2)">+2</button>
+        <button v-on:click="decrease1(2)">-2</button>
+
+        <p>Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <input type="text" v-on:input="setToDo"/>
+        <p>What you expected to do:{{todo}}</p>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="increase1(1)">+1</button>
+        <button v-on:click="decrease1(1)">-1</button>
+        <button v-on:click="increase1(2)">+2</button>
+        <button v-on:click="decrease1(2)">-2</button>
+
+        <p>Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <!-- <input type="text" v-on:input="setToDo"/> -->
+        <input type="text" v-on:input="setToDo($event,'我想要')"/>
+        <p>What you expected to do:{{todo}}</p>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: 'expeceted to...'
+        }
+    },
+    methods: {
+        setToDo(e,prefix) {
+            this.todo = `${prefix} ${e.target.value}`;
+        },
+        increase1(step) {
+            this.counter1 = this.counter1 + step
+        },
+        decrease1: function (step) {
+            this.counter1 = this.counter1 - step
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="increase1(1)">+1</button>
+        <button v-on:click="decrease1(1)">-1</button>
+        <button v-on:click="increase1(2)">+2</button>
+        <button v-on:click="decrease1(2)">-2</button>
+
+        <p>Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <!-- <input type="text" v-on:input="setToDo"/> -->
+        <input type="text" v-on:input="setToDo($event,'我想要')"/>
+        <p>What you expected to do:{{todo}}</p>
+        <hr />
+        <form v-on:submit="submitForm">
+            <input type="text">
+            <button type="text">Sign Up</button>
+        </form>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: 'expeceted to...'
+        }
+    },
+    methods: {
+        submitForm(e) {
+            // toggle this to show difference
+            // e.preventDefault()
+            alert('表單提交了!')
+        },
+        setToDo(e,prefix) {
+            this.todo = `${prefix} ${e.target.value}`;
+        },
+        increase1(step) {
+            this.counter1 = this.counter1 + step
+        },
+        decrease1: function (step) {
+            this.counter1 = this.counter1 - step
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: 'expeceted to...'
+        }
+    },
+    methods: {
+        submitForm(e) {
+            // toggle this to show difference
+            e.preventDefault()
+            alert('表單提交了!')
+        },
+        submitForm2(e) {
+            // no preventDefault() here
+            alert('表單2也提交了!')
+        },
+        setToDo(e,prefix) {
+            this.todo = `${prefix} ${e.target.value}`;
+        },
+        increase1(step) {
+            this.counter1 = this.counter1 + step
+        },
+        decrease1: function (step) {
+            this.counter1 = this.counter1 - step
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="increase1(1)">+1</button>
+        <button v-on:click="decrease1(1)">-1</button>
+        <button v-on:click="increase1(2)">+2</button>
+        <button v-on:click="decrease1(2)">-2</button>
+
+        <p>Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <!-- <input type="text" v-on:input="setToDo"/> -->
+        <input type="text" v-on:input="setToDo($event,'我想要')"/>
+        <p>What you expected to do:{{todo}}</p>
+        <hr />
+        <p>表單1</p>
+        <form v-on:submit="submitForm">
+            <input type="text">
+            <button type="text">Sign Up</button>
+        </form>
+        <br/>
+        <p>表單2</p>
+        <form v-on:submit.prevent="submitForm2">
+            <input type="text">
+            <button type="text">Sign Up2</button>
+        </form>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+
+https://vuejs.org/guide/essentials/event-handling.html#event-modifiers
+https://vuejs.org/guide/essentials/event-handling.html#event-modifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="increase1(1)">+1</button>
+        <button v-on:click="decrease1(1)">-1</button>
+        <button v-on:click="increase1(2)">+2</button>
+        <button v-on:click="decrease1(2)">-2</button>
+        <br/>
+        <p>middle</p>
+        <button v-on:click.middle="increase1(3)">+3</button>
+        <button v-on:click.middle="decrease1(3)">-3</button>
+        <p>right</p>
+        <button v-on:click.right="increase1(4)">+4</button>
+        <button v-on:click.right="decrease1(4)">-4</button>
+
+        <p>Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <!-- <input type="text" v-on:input="setToDo"/> -->
+        <input type="text" v-on:input="setToDo($event,'我想要')"/>
+        <p>What you expected to do:{{todo}}</p>
+        <hr />
+        <p>表單1</p>
+        <form v-on:submit="submitForm">
+            <input type="text">
+            <button type="text">Sign Up</button>
+        </form>
+        <br/>
+        <p>表單2</p>
+        <form v-on:submit.prevent="submitForm2">
+            <input type="text">
+            <button type="text">Sign Up2</button>
+        </form>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="increase1(1)">+1</button>
+        <button v-on:click="decrease1(1)">-1</button>
+        <button v-on:click="increase1(2)">+2</button>
+        <button v-on:click="decrease1(2)">-2</button>
+        <br />
+        <p>middle</p>
+        <button v-on:click.middle="increase1(3)">+3</button>
+        <button v-on:click.middle="decrease1(3)">-3</button>
+        <p>right</p>
+        <button v-on:click.right="increase1(4)">+4</button>
+        <button v-on:click.right="decrease1(4)">-4</button>
+
+        <p>Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <!-- <input type="text" v-on:input="setToDo"/> -->
+        <input type="text" v-on:input="setToDo($event,'我想要')" />
+        <p>What you expected to do:{{todo}}</p>
+        <hr />
+        <p>表單1</p>
+        <form v-on:submit="submitForm">
+            <input type="text">
+            <button type="text">Sign Up</button>
+        </form>
+        <br />
+        <p>表單2</p>
+        <form v-on:submit.prevent="submitForm2">
+            <input type="text">
+            <button type="text">Sign Up2</button>
+        </form>
+        <hr />
+        <input type="text" v-on:input="setUrgent" v-on:keyup.enter="commitUrgent">
+        <p>Current urgent issue:{{urgent}}</p>
+        <p>Committed urgent issue:{{checkedUrgent}}</p>
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: 'expeceted to...',
+            urgent: '',
+            checkedUrgent: ''
+        }
+    },
+    methods: {
+        setUrgent(e) {
+            this.urgent = e.target.value
+        },
+        commitUrgent() {
+            this.checkedUrgent = this.urgent
+        },
+        submitForm(e) {
+            // toggle this to show difference
+            e.preventDefault()
+            alert('表單提交了!')
+        },
+        submitForm2(e) {
+            // no preventDefault() here
+            alert('表單2也提交了!')
+        },
+        setToDo(e, prefix) {
+            this.todo = `${prefix} ${e.target.value}`;
+        },
+        increase1(step) {
+            this.counter1 = this.counter1 + step
+        },
+        decrease1: function (step) {
+            this.counter1 = this.counter1 - step
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="increase1(1)">+1</button>
+        <button v-on:click="decrease1(1)">-1</button>
+        <button v-on:click="increase1(2)">+2</button>
+        <button v-on:click="decrease1(2)">-2</button>
+        <br />
+        <p>middle</p>
+        <button v-on:click.middle="increase1(3)">+3</button>
+        <button v-on:click.middle="decrease1(3)">-3</button>
+        <p>right</p>
+        <button v-on:click.right="increase1(4)">+4</button>
+        <button v-on:click.right="decrease1(4)">-4</button>
+
+        <p>Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <!-- <input type="text" v-on:input="setToDo"/> -->
+        <input type="text" v-on:input="setToDo($event,'我想要')" />
+        <p>What you expected to do:{{todo}}</p>
+        <hr />
+        <p>表單1</p>
+        <form v-on:submit="submitForm">
+            <input type="text">
+            <button type="text">Sign Up</button>
+        </form>
+        <br />
+        <p>表單2</p>
+        <form v-on:submit.prevent="submitForm2">
+            <input type="text">
+            <button type="text">Sign Up2</button>
+        </form>
+        <hr />
+        <input type="text" v-on:input="setUrgent" v-on:keyup.enter="commitUrgent">
+        <p>Current urgent issue:{{urgent}}</p>
+        <p>Committed urgent issue:{{checkedUrgent}}</p>
+        <hr />
+        <p>目前的值:{{counter2}}</p>
+        <p v-once>初始值:{{counter2}}</p>
+        <button v-on:click="increase2(4)">+4</button>
+        <button v-on:click="decrease2(4)">-4</button>
+
+    </section>
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: 'expeceted to...',
+            urgent: '',
+            checkedUrgent: '',
+            counter2: 666
+        }
+    },
+    methods: {
+        setUrgent(e) {
+            this.urgent = e.target.value
+        },
+        commitUrgent() {
+            this.checkedUrgent = this.urgent
+        },
+        submitForm(e) {
+            // toggle this to show difference
+            e.preventDefault()
+            alert('表單提交了!')
+        },
+        submitForm2(e) {
+            // no preventDefault() here
+            alert('表單2也提交了!')
+        },
+        setToDo(e, prefix) {
+            this.todo = `${prefix} ${e.target.value}`;
+        },
+        increase1(step) {
+            this.counter1 = this.counter1 + step
+        },
+        decrease1: function (step) {
+            this.counter1 = this.counter1 - step
+        },
+        increase2(s) {
+            this.counter2 = this.counter2 + s
+        },
+        decrease2(s) {
+            this.counter2 = this.counter2 - s
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>two way binding</h1>
+    <section id="app">
+        <input type="text" v-on:input="setIssue">
+        <p>your issue is:{{issue}}</p>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+original
+
+const app = Vue.createApp({
+    data() {
+        return {
+            issue: 'default issue'
+        }
+    },
+    methods: {
+        setIssue(e) {
+            this.issue = e.target.value
+        },
+        resetIssue() {
+            this.issue = ''
+        }
+    }
+})
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>two way binding</h1>
+    <section id="app">
+        <input type="text" v-on:input="setIssue">
+        <p>your issue is:{{issue}}</p>
+        <button v-on:click="resetIssue">clear issue</button>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>two way binding</h1>
+    <section id="app">
+        <input type="text" @input="setIssue">
+        <p>your issue is:{{issue}}</p>
+        <button @click="resetIssue">clear issue</button>
+    </section>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>
