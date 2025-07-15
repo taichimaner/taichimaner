@@ -8,7 +8,7 @@ HTML<--DOM-->vdom["vdom(virtual dom)"];
 ```
 
 ## SPA 
-
+- preventEvent
 ```mermaid
 sequenceDiagram
     participant B as Browser
@@ -21,6 +21,8 @@ sequenceDiagram
     S-->>B: response
     B-->>S: ajax
     S-->>B: response
+    B->>S: req (不會進行第二次req)
+    S->>B: response
 ```
 
 
