@@ -3,5 +3,5 @@
 
 ```mermaid
 graph LR;
-Vue((Vnewlue\nreactive))<-->B;
+Vue((Vue<br>reactive<br>X<br>Y))<-->HTML[HTML<br>elementX<br>elementY];
 ```
