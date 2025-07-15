@@ -27,6 +27,6 @@ sequenceDiagram
 
 - two way binding
 - ```v-on``` 可縮寫為 ```@```
-- ```v-model```
+- ```v-model``` 可雙向連結
 
 
