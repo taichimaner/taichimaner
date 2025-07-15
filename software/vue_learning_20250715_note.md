@@ -2,6 +2,6 @@
 ## Reactivity and Render Cycle
 
 ```mermaid
-graph TD;
-Vue<-->B;
+graph LR;
+Vue((Vnewlue\nreactive))<-->B;
 ```
