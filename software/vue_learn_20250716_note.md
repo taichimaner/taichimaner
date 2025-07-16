@@ -17,3 +17,16 @@
   npm init vue
   ```
 
+### 介紹版控
+- https://git-scm.com/book/zh-tw/v2/%E9%96%8B%E5%A7%8B-%E5%88%9D%E6%AC%A1%E8%A8%AD%E5%AE%9A-Git
+- 在github上新增一個repo
+- 將本機的專案push
+- ```
+  git config --global user.name "YOUR_NAME"
+  git config --global user.email YOUR_EMAIL
+  more c:\Users\Admin\.gitconfig
+  https://github.com/login
+  git remote add origin https://github.com/<account>/<project>.git
+  git push -u origin master
+  ```
+
