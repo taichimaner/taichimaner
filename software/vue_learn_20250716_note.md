@@ -30,5 +30,8 @@
   https://github.com/login
   git remote add origin https://github.com/<account>/<project>.git
   git push -u origin master
+
+  git status
+  git log
   ```
 
