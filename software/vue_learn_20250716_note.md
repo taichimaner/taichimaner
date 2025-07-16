@@ -12,8 +12,13 @@
   ```
   "include":["./src/**/*"]
   ```
-- 重新改寫 App.vue
-- 
+- 重新改寫 App.vue，可使用 vbase 快速建立vue template
+- 幾種CSS套件
+  - tailwind
+  - shadcn
+  - material
+  - vuetify
+  - 
 ### vite方式
 - ```
   npm init vue
