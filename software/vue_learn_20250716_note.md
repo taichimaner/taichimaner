@@ -12,6 +12,8 @@
   ```
   "include":["./src/**/*"]
   ```
+- 重新改寫 App.vue
+- 
 ### vite方式
 - ```
   npm init vue
