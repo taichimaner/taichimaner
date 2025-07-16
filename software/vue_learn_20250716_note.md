@@ -15,6 +15,8 @@
 ### vite方式
 - ```
   npm init vue
+  npm install
+  npm run dev
   ```
 
 ### 介紹版控
