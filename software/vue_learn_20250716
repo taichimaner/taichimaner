@@ -20,3 +20,1346 @@ git config --global user.name "YOUR_NAME"
 git config --global user.email YOUR_EMAIL
 
 more c:\Users\Admin\.gitconfig
+
+https://github.com/login
+
+git remote add origin https://github.com/<account>/<project>.git
+
+git push -u origin master
+~~~~~~~~~~~~~~~~~~~~~~~~~
+appendix
+
+
+https://git-scm.com/
+
+git remote -v
+
+138.0.7204.158
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+jsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include":["./src/**/*"]
+}
+
+
+git push
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+back to cmd
+cd C:\Users\Admin\vue_labs
+npm init vue
+(default) enter*2
+
+
+
+cd C:\Users\Admin\source
+git clone <從貼圖來的address (.git ending)>
+
+
+close all vscode, reopen vscode
+npm run serve
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cd C:\Users\Admin\vue_labs>
+cd lab12_vite
+npm install
+npm run dev
+
+rename App.vue ==> AppOrig.vue
+
+create a file App.vue
+
+<template>
+    <H1>Hello World from SFC(single file component)</H1>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35 }]
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35 }]
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+components/CourseIntro.vue
+
+<template>
+    <li>
+        <h2>{{ course.id }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <ul v-if="detailsVisible">
+            <li>{{ course.name }}</li>
+            <li>{{ course.detail }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            detailsVisible: true,
+            course: { id: "poop", name: "python oop", duration: 35 }
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.js
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import CourseIntro from './components/CourseIntro.vue'
+
+const app = createApp(App)
+app.component("course-intro",CourseIntro)
+app.mount('#app')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro></course-intro>
+        <course-intro></course-intro>
+        <course-intro></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35 }]
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro></course-intro>
+        <course-intro></course-intro>
+        <course-intro></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35 }]
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro id="poop" name="python and oop" duration=35></course-intro>
+        <course-intro id="bdpy" name="python and big data" duration=42></course-intro>
+
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35 }]
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <li>
+        <h2>{{ id }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: ["id", "name", "duration"],
+    data() {
+        return {
+            detailsVisible: true,
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro id="poop" name="python and oop" duration=35 current="true"></course-intro>
+        <course-intro id="bdpy" name="python and big data" duration=42 current="false"></course-intro>
+
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35 }]
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <li>
+        <h2>{{ id }}-{{ current }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: ["id", "name", "duration", "current"],
+    data() {
+        return {
+            detailsVisible: true,
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        }
+    }
+}
+</script>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <li>
+        <h2>{{ id }}-{{ current }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: ["id", "name", "duration", "current"],
+    data() {
+        return {
+            detailsVisible: true,
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            this.current = !this.current;
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <li>
+        <h2>{{ id }}-Current:{{ current }}-isCurrent:{{ isCurrent }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <button @click="toggleCurrent">toggle isCurrent status</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: ["id", "name", "duration", "current"],
+    data() {
+        return {
+            detailsVisible: true,
+            isCurrent: this.current
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            this.isCurrent = !this.isCurrent;
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro id="poop" name="python and oop" duration="35" current="true"></course-intro>
+        <course-intro id="bdpy" name="python and big data" duration="42" current="false"></course-intro>
+
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35 }]
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <li>
+        <h2>{{ id }}-Current:{{ current }}-isCurrent:{{ isCurrent }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <button @click="toggleCurrent">toggle isCurrent status</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: {
+        id: { type: String, required: true },
+        name: { type: String, required: true },
+        duration: {
+            type: String, required: true, validator: function (value) {
+                return parseInt(value) > 7
+            }
+        },
+        current: { type: String, required: false, default: "false" }
+    },
+    data() {
+        return {
+            detailsVisible: true,
+            isCurrent: this.current
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            this.isCurrent = !this.isCurrent;
+        }
+    }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+
+<course-intro id="pykt" name="python and big data" duration="8"></course-intro>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro id="poop" name="python and oop" :duration=35 :current=true></course-intro>
+        <course-intro id="bdpy" name="python and big data" :duration=42 :current=false></course-intro>
+        <course-intro id="pykt" name="python and big data" :duration=8></course-intro>
+    </ul>
+</template>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <li>
+        <h2>{{ id }}-Current:{{ current }}-isCurrent:{{ isCurrent }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <button @click="toggleCurrent">toggle isCurrent status</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: {
+        id: { type: String, required: true },
+        name: { type: String, required: true },
+        duration: {
+            type: Number, required: true, validator: function (value) {
+                return value > 7
+            }
+        },
+        current: { type: Boolean, required: false, default: false }
+    },
+    data() {
+        return {
+            detailsVisible: true,
+            isCurrent: this.current
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            this.isCurrent = !this.isCurrent;
+        }
+    }
+}
+</script>
+
+use vbind in props
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current"></course-intro>
+        <!-- <course-intro id="poop" name="python and oop" :duration=35 :current=true></course-intro>
+        <course-intro id="bdpy" name="python and big data" :duration=42 :current=false></course-intro>
+        <course-intro id="pykt" name="python and big data" :duration=8></course-intro> -->
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+use v-for to iterate components
+
+CourseIntro.vue
+<template>
+    <li>
+        <h2>{{ id }}-Current:{{ current }}-isCurrent:{{ isCurrent }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <button @click="toggleCurrent">toggle isCurrent status</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: {
+        id: { type: String, required: true },
+        name: { type: String, required: true },
+        duration: {
+            type: Number, required: true, validator: function (value) {
+                return value > 7
+            }
+        },
+        current: { type: Boolean, required: false, default: false }
+    },
+    data() {
+        return {
+            detailsVisible: true,
+            isCurrent: this.current
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            // this.isCurrent = !this.isCurrent;
+            this.$emit('toggle-current', this.id)
+        }
+    }
+}
+</script>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current" @toggle-current="toggleCurrentStatus"></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    },
+    methods: {
+        toggleCurrentStatus(id) {
+            console.log("should change id=", id)
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current" @toggle-current="toggleCurrentStatus"></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    },
+    methods: {
+        toggleCurrentStatus(id) {
+            const course = this.courses.find(c => c.id === id)
+            course.current = !course.current
+            console.log(`course with id:${id}  changed `)
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+使用emit更新父元件的data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+check out mitt branch
+
+ctrl+C stop dev server
+npm install mitt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import CourseIntro from './components/CourseIntro.vue'
+import mitt from "mitt"
+const emitter = mitt()
+const app = createApp(App)
+app.component("course-intro", CourseIntro)
+app.config.globalProperties.emitter = emitter
+app.mount('#app')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+<template>
+    <h1>Hello World from SFC(single file component)</h1>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current"></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    created() {
+        console.log("app元件被呼叫, 初始化中...")
+        this.emitter.on('toggle-current', idx => {
+            const course = this.courses.find(course => course.id === idx)
+            course.current = !course.current
+            console.log(`已變更${idx}的current state`)
+        })
+    },
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CourseIntro.vue
+
+<template>
+    <li>
+        <h2>{{ id }}-Current:{{ current }}-isCurrent:{{ isCurrent }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <button @click="toggleCurrent">toggle isCurrent status</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    props: {
+        id: { type: String, required: true },
+        name: { type: String, required: true },
+        duration: {
+            type: Number, required: true, validator: function (value) {
+                return value > 7
+            }
+        },
+        current: { type: Boolean, required: false, default: false }
+    },
+    data() {
+        return {
+            detailsVisible: true,
+            isCurrent: this.current
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            this.emitter.emit('toggle-current', this.id)
+            //this.isCurrent = !this.isCurrent;
+        }
+    }
+}
+</script>
+
+使用mitt傳遞
+
+git commit
+git push origin mitt
+
+
+git branch
+git checkout master
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <li>
+        <h2>{{ id }}-Current:{{ current }}-isCurrent:{{ isCurrent }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <button @click="toggleCurrent">toggle isCurrent status</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    emits: {
+        "toggle-current": function (id) {
+            if (id) {
+                return true
+            } else {
+                console.log("toggle-current should provide id, id missing!!")
+                return false
+            }
+        }
+    },
+    props: {
+        id: { type: String, required: true },
+        name: { type: String, required: true },
+        duration: {
+            type: Number, required: true, validator: function (value) {
+                return value > 7
+            }
+        },
+        current: { type: Boolean, required: false, default: false }
+    },
+    data() {
+        return {
+            detailsVisible: true,
+            isCurrent: this.current
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            // this.isCurrent = !this.isCurrent;
+            this.$emit('toggle-current', this.id)
+        }
+    }
+}
+</script>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+components/NewCourse.vue
+<template>
+    <form>
+        <div>
+            <label>id</label>
+            <input type="text" />
+        </div>
+        <div>
+            <label>name</label>
+            <input type="text" />
+        </div>
+        <div>
+            <label>duration</label>
+            <input type="text" />
+        </div>
+        <button>Add Course</button>
+    </form>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import { createApp } from 'vue'
+import App from './App.vue'
+import CourseIntro from './components/CourseIntro.vue'
+import NewCourse from './components/NewCourse.vue'
+
+const app = createApp(App)
+app.component("course-intro",CourseIntro)
+app.component("new-course",NewCourse)
+app.mount('#app')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>簡單課程管理系統</h1>
+    <new-course></new-course>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current" @toggle-current="toggleCurrentStatus"></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    },
+    methods: {
+        toggleCurrentStatus(id) {
+            const course = this.courses.find(c => c.id === id)
+            course.current = !course.current
+            console.log(`course with id:${id}  changed `)
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+<template>
+    <h1>簡單課程管理系統</h1>
+    <new-course></new-course>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current" @toggle-current="toggleCurrentStatus"></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    },
+    methods: {
+        toggleCurrentStatus(id) {
+            const course = this.courses.find(c => c.id === id)
+            course.current = !course.current
+            console.log(`course with id:${id}  changed `)
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li, #app form {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+commit first time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <form @submit.prevent="submitData">
+        <div>
+            <label>id</label>
+            <input type="text" v-model="inputId" />
+        </div>
+        <div>
+            <label>name</label>
+            <input type="text" v-model="inputName" />
+        </div>
+        <div>
+            <label>duration</label>
+            <input type="text" v-model="inputDuration" />
+        </div>
+        <button>Add Course</button>
+    </form>
+</template>
+
+<script>
+export default {
+    emits: ["add-course"],
+    data() {
+        return {
+            inputId: "",
+            inputName: "",
+            inputDuration: ""
+        }
+    },
+    methods: {
+        submitData() {
+            this.$emit("add-course", this.inputId, this.inputName, this.inputDuration)
+        }
+    }
+
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>簡單課程管理系統</h1>
+    <new-course @add-course="addCourse"></new-course>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current" @toggle-current="toggleCurrentStatus"></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    },
+    methods: {
+        toggleCurrentStatus(id) {
+            const course = this.courses.find(c => c.id === id)
+            course.current = !course.current
+            console.log(`course with id:${id}  changed `)
+        },
+        addCourse(id, name, duration) {
+            const newCourse = { id: id, name: name, duration: duration, current: false }
+            this.courses.push(newCourse)
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li,
+#app form {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+完成新增課程
+
+<div>
+            <label>duration</label>
+            <input type="number" v-model="inputDuration" />
+        </div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CourseIntro.vue
+
+<template>
+    <li>
+        <h2>{{ id }}-Current:{{ current }}-isCurrent:{{ isCurrent }}</h2>
+        <button @click="toggleCourseDetail">show detail</button>
+        <button @click="toggleCurrent">toggle isCurrent status</button>
+        <br/>
+        <button @click="deleteCourse">Delete</button>
+        <ul v-if="detailsVisible">
+            <li>{{ name }}</li>
+            <li>{{ duration }}</li>
+        </ul>
+    </li>
+</template>
+
+<script>
+export default {
+    emits: {
+        "toggle-current": function (id) {
+            if (id) {
+                return true
+            } else {
+                console.log("toggle-current should provide id, id missing!!")
+                return false
+            }
+        },
+        "delete-current": function (id) {
+            if (id) {
+                return true
+            } else {
+                console.log("delete-current should provide id, id missing!!")
+                return false
+            }
+        }
+    },
+    props: {
+        id: { type: String, required: true },
+        name: { type: String, required: true },
+        duration: {
+            type: Number, required: true, validator: function (value) {
+                return value > 7
+            }
+        },
+        current: { type: Boolean, required: false, default: false }
+    },
+    data() {
+        return {
+            detailsVisible: true,
+            isCurrent: this.current
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible
+        },
+        toggleCurrent() {
+            // this.isCurrent = !this.isCurrent;
+            this.$emit('toggle-current', this.id)
+            //this.$emit('toggle-current')
+        },
+        deleteCourse() {
+            this.$emit("delete-current", this.id)
+        }
+
+    }
+}
+</script>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <h1>簡單課程管理系統</h1>
+    <new-course @add-course="addCourse"></new-course>
+    <ul>
+        <course-intro v-for="course in courses" :key="course.id" :id="course.id" :name="course.name"
+            :duration="course.duration" :current="course.current" @toggle-current="toggleCurrentStatus"
+            @delete-current="deleteCourse"></course-intro>
+    </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            courses: [{ id: "poop", name: "python oop", duration: 35, current: true },
+            { id: "bdpy", name: "python and big data", duration: 42, current: false },
+            { id: "pykt", name: 'keras and tensorflow', duration: 35, current: true }
+            ]
+        }
+    },
+    methods: {
+        toggleCurrentStatus(id) {
+            const course = this.courses.find(c => c.id === id)
+            course.current = !course.current
+            console.log(`course with id:${id}  changed `)
+        },
+        addCourse(id, name, duration) {
+            const newCourse = { id: id, name: name, duration: duration, current: false }
+            this.courses.push(newCourse)
+        },
+        deleteCourse(id) {
+            this.courses = this.courses.filter(course => course.id !== id)
+        }
+    }
+}
+</script>
+<style>
+#app ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#app li,
+#app form {
+    box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 40rem;
+}
+
+#app button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #FF0077;
+    background-color: #C0FFEE;
+    color: black;
+
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <div>
+    <h3>{{ userName }}</h3>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      userName: "Mark Ho"
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+npm run dev
