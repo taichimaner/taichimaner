@@ -8,6 +8,10 @@
   ctrl+c
   code .
   ```
+- 調整 jsconfig.js
+  ```
+  "include":["./src/**/*"]
+  ```
 ### vite方式
 - ```
   npm init vue
