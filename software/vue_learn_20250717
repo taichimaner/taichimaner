@@ -1,0 +1,1554 @@
+https://survey.uuu.com.tw/
+22502071
+https://survey.uuu.com.tw/survey_keyin.aspx?class_id=22502071&course_id=%a5%f8%b7%7e%a5%5d%afZ
+console.firebase.google.com
+
+jsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include":["./src/**/*"]
+}
+
+npm run dev
+
+CompositionComponent1.vue
+<template>
+    <div>
+        <h1>composition component1</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    setup () {
+        
+
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CompositionComponent2.vue
+<template>
+    <div>
+        <h1>Composition Component2</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    setup () {
+        
+
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+<template>
+  <div>
+    <h3>{{ userName }}</h3>
+    <!-- <CompositionComponent1></CompositionComponent1> -->
+    <composition-component1></composition-component1>
+    <hr/>
+    <CompositionComponent2></CompositionComponent2>
+    <composition-component2></composition-component2>
+  </div>
+</template>
+
+<script>
+import CompositionComponent1 from './components/CompositionComponent1.vue';
+import CompositionComponent2 from './components/CompositionComponent2.vue';
+export default {
+  //components:{CompositionComponent1},
+  components: {
+    "composition-component1": CompositionComponent1,
+    CompositionComponent2
+  },
+  data() {
+    return {
+      userName: "Mark Ho"
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>composition component1</h1>
+        <h3>userName:{{ userName }}</h3>
+        <h3>userName2:{{ userName2 }}</h3>
+    </div>
+</template>
+
+<script>
+import { ref } from 'vue'
+
+export default {
+    setup() {
+
+        let userName = "Mark Ho"
+        let userName2 = ref("Mark Ho")
+        console.log("userName type:", typeof userName, userName)
+        console.log("userName2 type:", typeof userName2, userName2)
+        setTimeout(() => {
+            userName = "何孟翰"
+            userName2.value = "MengHang Ho"
+            console.log("userName type:", typeof userName, userName)
+            console.log("userName2 type:", typeof userName2, userName2)
+        }, 12000)
+        return { userName,userName2 }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CompositionComponent2.vue
+<template>
+    <div>
+        <h1>Composition Component2</h1>
+        <h3>userName:{{ userName }}</h3>
+        <h3>userName2:{{ userName2 }}</h3>
+    </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+let userName = "Mark Ho"
+let userName2 = ref("Mark Ho")
+console.log("userName type:", typeof userName, userName)
+console.log("userName2 type:", typeof userName2, userName2)
+setTimeout(() => {
+    userName = "何孟翰"
+    userName2.value = "MengHang Ho"
+    console.log("userName type:", typeof userName, userName)
+    console.log("userName2 type:", typeof userName2, userName2)
+}, 12000)
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>composition component1</h1>
+        <h3>userName:{{ userName }}</h3>
+        <p>age:{{ age }}</p>
+        <h3>userName2:{{ userName2 }}</h3>
+    </div>
+</template>
+
+<script>
+import { ref } from 'vue'
+
+export default {
+    setup() {
+
+        let userName = "Mark Ho"
+        let userName2 = ref("Mark Ho")
+        let currentAge = ref(49)
+        setTimeout(() => {
+            userName = "何孟翰"
+            userName2.value = "MengHang Ho"
+            currentAge.value += 1
+        }, 4000)
+        return { userName, userName2, age: currentAge }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>Composition Component2</h1>
+        <h3>userName:{{ userName }}</h3>
+        <p>age:{{ currentAge }}</p>
+        <h3>userName2:{{ userName2 }}</h3>
+    </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+let userName = "Mark Ho"
+let userName2 = ref("Mark Ho")
+let currentAge = ref(49)
+setTimeout(() => {
+    userName = "何孟翰"
+    userName2.value = "MengHang Ho"
+    currentAge.value += 1
+}, 4000)
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>composition component1</h1>
+        <h3>userName:{{ userName }}</h3>
+        <p>age:{{ age }}</p>
+        <h3>userName2:{{ userName2 }}</h3>
+    </div>
+</template>
+
+<script>
+import { ref } from 'vue'
+
+export default {
+    setup() {
+
+        let userName = "Mark Ho"
+        const userName2 = ref("Mark Ho")
+        const currentAge = ref(49)
+        setTimeout(() => {
+            userName = "何孟翰"
+            userName2.value = "MengHang Ho"
+            currentAge.value += 1
+        }, 4000)
+        return { userName, userName2, age: currentAge }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>Composition Component2</h1>
+        <h3>userName:{{ userName }}</h3>
+        <p>age:{{ currentAge }}</p>
+        <h3>userName2:{{ userName2 }}</h3>
+    </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+let userName = "Mark Ho"
+const userName2 = ref("Mark Ho")
+const currentAge = ref(49)
+setTimeout(() => {
+    userName = "何孟翰"
+    userName2.value = "MengHang Ho"
+    currentAge.value += 1
+}, 4000)
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CompositionComponent3.vue
+<template>
+    <div>
+        <h1>ref參照到物件</h1>
+        <p>{{ user }}</p>
+    </div>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+    setup() {
+        const user = ref({
+            userName: "Mark Ho",
+            age: 49
+        })
+        setTimeout(() => {
+            user.value.userName = "Meng-Hang Ho"
+            user.value.age += 1
+        }, 2000)
+        return { user: user }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>ref參照到物件</h1>
+        <p>{{ user }}</p>
+        <p>userName:{{ user.userName }},age:{{ user.age }}</p>
+        <h1>如果不是reactive的就不會變</h1>
+        <p>{{ pUserName }},{{ pAge }}</p>
+    </div>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+    setup() {
+        const user = ref({
+            userName: "Mark Ho",
+            age: 49
+        })
+        setTimeout(() => {
+            user.value.userName = "Meng-Hang Ho"
+            user.value.age += 1
+        }, 2000)
+        return { user: user, pUserName: user.value.userName, pAge: user.value.age }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <div>
+    <h3>{{ userName }}</h3>
+    <!-- <CompositionComponent1></CompositionComponent1> -->
+    <composition-component1></composition-component1>
+    <hr/>
+    <CompositionComponent2></CompositionComponent2>
+    <composition-component2></composition-component2>
+    <hr/>
+    <CompositionComponent3></CompositionComponent3>
+    <hr/>
+    <composition-component4></composition-component4>
+  </div>
+</template>
+
+<script>
+import CompositionComponent1 from './components/CompositionComponent1.vue';
+import CompositionComponent2 from './components/CompositionComponent2.vue';
+import CompositionComponent3 from './components/CompositionComponent3.vue';
+import CompositionComponent4 from './components/CompositionComponent4.vue'
+export default {
+  //components:{CompositionComponent1},
+  components: {
+    "composition-component1": CompositionComponent1,
+    CompositionComponent2,
+    CompositionComponent3,
+    CompositionComponent4
+  },
+  data() {
+    return {
+      userName: "Mark Ho"
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>reactive參照到物件</h1>
+        <p>{{ user }}</p>
+        <p>userName:{{ user.userName }},age:{{ user.age }}</p>
+        <h1>如果不是reactive的就不會變</h1>
+        <p>{{ pUserName }},{{ pAge }}</p>
+    </div>
+</template>
+
+<script>
+import { reactive } from 'vue';
+
+export default {
+    setup() {
+        const user = reactive({
+            userName: "Mark Ho",
+            age: 49
+        })
+        setTimeout(() => {
+            user.userName = "Meng Hang Ho"
+            user.age += 1
+        }, 2000)
+
+        return { user: user, pUserName: user.userName, pAge: user.age }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>composition component1</h1>
+        <h3>userName:{{ userName }}</h3>
+        <p>age:{{ age }}</p>
+        <h3>userName2:{{ userName2 }}</h3>
+    </div>
+</template>
+
+<script>
+import { ref, isRef, isReactive } from 'vue'
+
+export default {
+    setup() {
+
+        let userName = "Mark Ho"
+        const userName2 = ref("Mark Ho")
+        const currentAge = ref(49)
+        console.log("userName is ref?", isRef(userName))
+        console.log("userName2 is ref?", isRef(userName2))
+        console.log("userName2.value is ref?", isRef(userName2.value))
+        console.log("userName is reactive?", isReactive(userName))
+        console.log("userName2 is reactive?", isReactive(userName2))
+        console.log("userName2.value is reactive?", isReactive(userName2.value))
+
+        setTimeout(() => {
+            userName = "何孟翰"
+            userName2.value = "MengHang Ho"
+            currentAge.value += 1
+        }, 4000)
+        return { userName, userName2, age: currentAge }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>reactive參照到物件</h1>
+        <p>{{ user }}</p>
+        <p>userName:{{ user.userName }},age:{{ user.age }}</p>
+        <h1>如果不是reactive的就不會變</h1>
+        <p>{{ pUserName }},{{ pAge }}</p>
+    </div>
+</template>
+
+<script>
+import { reactive,isRef, isReactive } from 'vue';
+
+export default {
+    setup() {
+        const user = reactive({
+            userName: "Mark Ho",
+            age: 49
+        })
+        console.log("user is reactive?", isReactive(user))
+        console.log("user is ref?", isRef(user))
+        console.log("user.userName is reactive?", isReactive(user.userName))
+        console.log("user.age is reactive?", isReactive(user.age))
+        setTimeout(() => {
+            user.userName = "Meng Hang Ho"
+            user.age += 1
+        }, 2000)
+
+        return { user: user, pUserName: user.userName, pAge: user.age }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <div>
+    <h3>{{ userName }}</h3>
+    <!-- <CompositionComponent1></CompositionComponent1> -->
+    <composition-component1></composition-component1>
+    <hr />
+    <CompositionComponent2></CompositionComponent2>
+    <composition-component2></composition-component2>
+    <hr />
+    <CompositionComponent3></CompositionComponent3>
+    <hr />
+    <composition-component4></composition-component4>
+    <hr />
+    <CompositionComponent5></CompositionComponent5>
+  </div>
+</template>
+
+<script>
+import CompositionComponent1 from './components/CompositionComponent1.vue';
+import CompositionComponent2 from './components/CompositionComponent2.vue';
+import CompositionComponent3 from './components/CompositionComponent3.vue';
+import CompositionComponent4 from './components/CompositionComponent4.vue'
+import CompositionComponent5 from './components/CompositionComponent5.vue';
+export default {
+  //components:{CompositionComponent1},
+  components: {
+    "composition-component1": CompositionComponent1,
+    CompositionComponent2,
+    CompositionComponent3,
+    CompositionComponent4,
+    CompositionComponent5,
+  },
+  data() {
+    return {
+      userName: "Mark Ho"
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>reactive參照到物件...</h1>
+        <p>{{ user }}</p>
+    </div>
+</template>
+
+<script>
+import { isRef, reactive, toRefs } from 'vue';
+
+export default {
+    setup() {
+        const user = reactive({
+            userName: "Mark Ho",
+            age: 49
+        })
+        console.log("reactive user=", user)
+        const userReactiveToRefs = toRefs(user)
+        console.log(" after torefs, ", userReactiveToRefs)
+        console.log("user底下的userName包裝後是ref嗎?", isRef(userReactiveToRefs.userName))
+        console.log("user底下的age包裝後是ref嗎?", isRef(userReactiveToRefs.age))
+        setTimeout(() => {
+            user.userName = "Meng Hang Ho"
+            user.age += 1
+        }, 2000)
+
+        return { user: user }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>reactive參照到物件...</h1>
+        <p>{{ user }}</p>
+        <h1>toRefs的ref參照到物件的屬性</h1>
+        <p>{{ userName }}</p>
+        <p>{{ age }}</p>
+    </div>
+</template>
+
+<script>
+import { isRef, reactive, toRefs } from 'vue';
+
+export default {
+    setup() {
+        const user = reactive({
+            userName: "Mark Ho",
+            age: 49
+        })
+        console.log("reactive user=", user)
+        // const userReactiveToRefs = toRefs(user)
+        // console.log(" after torefs, ", userReactiveToRefs)
+        // console.log("user底下的userName包裝後是ref嗎?", isRef(userReactiveToRefs.userName))
+        // console.log("user底下的age包裝後是ref嗎?", isRef(userReactiveToRefs.age))
+        const { userName, age } = toRefs(user)
+        setTimeout(() => {
+            user.userName = "Meng Hang Ho"
+            user.age += 1
+            setTimeout(() => {
+                userName.value = "何孟翰"
+                age.value += 5
+            }, 2000)
+        }, 2000)
+
+        return { user: user, userName: userName, age: age }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>物件維持reactivity</h1>
+        <p>{{ user }}</p>
+        <h1>物件的屬性維持reactivity</h1>
+        <p>{{ userName }}</p>
+        <p>{{ age }}</p>
+    </div>
+</template>
+
+<script>
+import { reactive, toRefs } from 'vue';
+
+export default {
+    setup() {
+        // define reactive variable
+        const user = reactive({
+            userName: "Mark Ho",
+            age: 49
+        })
+        // operate the reactive object
+        setTimeout(() => {
+            user.userName = "Meng Hang Ho"
+            user.age += 1
+        }, 2000)
+
+        return { user, ...toRefs(user) }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <div>
+    <h3>{{ userName }}</h3>
+    <!-- <CompositionComponent1></CompositionComponent1> -->
+    <composition-component1></composition-component1>
+    <hr />
+    <CompositionComponent2></CompositionComponent2>
+    <composition-component2></composition-component2>
+    <hr />
+    <CompositionComponent3></CompositionComponent3>
+    <hr />
+    <composition-component4></composition-component4>
+    <hr />
+    <CompositionComponent5></CompositionComponent5>
+    <hr />
+    <CompositionComponent6></CompositionComponent6>
+  </div>
+</template>
+
+<script>
+import CompositionComponent1 from './components/CompositionComponent1.vue';
+import CompositionComponent2 from './components/CompositionComponent2.vue';
+import CompositionComponent3 from './components/CompositionComponent3.vue';
+import CompositionComponent4 from './components/CompositionComponent4.vue'
+import CompositionComponent5 from './components/CompositionComponent5.vue';
+import CompositionComponent6 from './components/CompositionComponent6.vue';
+export default {
+  //components:{CompositionComponent1},
+  components: {
+    "composition-component1": CompositionComponent1,
+    CompositionComponent2,
+    CompositionComponent3,
+    CompositionComponent4,
+    CompositionComponent5,
+    CompositionComponent6,
+  },
+  data() {
+    return {
+      userName: "Mark Ho"
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>
+
+npm init vue@latest
+
+*  請輸入專案名稱：
+|  lab13_vite_composition2
+*  請選擇要包含的功能： (↑/↓ 切換，空格選擇，a 全選，enter 確認)
+*  請選擇要包含的試驗特性： (↑/↓ 切換，空格選擇，a 全選，enter 確認)
+
+enter, enter
+cd lab13_vite_composition2
+code .
+npm install
+jsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["./src/**/*"]
+}
+
+npm run dev
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+MyComp1.vue
+<template>
+    <div>
+        <h1>元件1</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    setup () {
+        
+
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script setup>
+import MyComp1 from './components/MyComp1.vue';
+
+</script>
+
+<template>
+  <h1>Composition Lab2</h1>
+  <br />
+  <MyComp1></MyComp1>
+</template>
+
+<style scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <h3>{{ course }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+    </div>
+</template>
+
+<script>
+import { reactive } from 'vue'
+export default {
+    setup() {
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+        }
+        return { course, extraDuration }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <h3>{{ course }} 價格是 {{ price }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+    </div>
+</template>
+
+<script>
+import { reactive, ref } from 'vue'
+export default {
+    setup() {
+        const price = ref(24000)
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        return { course, extraDuration, price }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <h3>{{ course }} 價格是 {{ price }}</h3>
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" @input="setCourseId" />
+        <input placeholder="courseFullName" @input="setCourseFullName" />
+    </div>
+</template>
+
+<script>
+import { reactive, ref } from 'vue'
+export default {
+    setup() {
+        const price = ref(24000)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseDisplayName = function () {
+            return courseId.value + '../..' + courseFullName.value
+        }
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        function setCourseId(e) {
+            courseId.value = e.target.value
+        }
+        function setCourseFullName(e) {
+            courseFullName.value = e.target.value
+        }
+        return { course, extraDuration, price, courseDisplayName, setCourseId, setCourseFullName }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <h3>{{ course }} 價格是 {{ price }}</h3>
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" @input="setCourseId" />
+        <input placeholder="courseFullName" @input="setCourseFullName" />
+    </div>
+</template>
+
+<script>
+import { reactive, ref, computed } from 'vue'
+export default {
+    setup() {
+        const price = ref(24000)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseDisplayName = computed(function () {
+            console.log(".")
+            return courseId.value + '../..' + courseFullName.value
+        })
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        function setCourseId(e) {
+            courseId.value = e.target.value
+        }
+        function setCourseFullName(e) {
+            courseFullName.value = e.target.value
+        }
+        return { course, extraDuration, price, courseDisplayName, setCourseId, setCourseFullName }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <h3>{{ course }} 價格是 {{ price }}</h3>
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" v-model="courseId" />
+        <input placeholder="courseFullName" v-model="courseFullName" />
+    </div>
+</template>
+
+<script>
+import { reactive, ref, computed, watch } from 'vue'
+export default {
+    setup() {
+        const price = ref(24000)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseDisplayName = computed(function () {
+            // console.log(".")
+            return courseId.value + '../..' + courseFullName.value
+        })
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        watch(price, function (newValue, oldValue) {
+            console.log(`price goes from ${oldValue} to ${newValue}`)
+        })
+        // function setCourseId(e) {
+        //     courseId.value = e.target.value
+        // }
+        // function setCourseFullName(e) {
+        //     courseFullName.value = e.target.value
+        // }
+        return {
+            course, extraDuration, price, courseDisplayName,
+            courseId, courseFullName
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <h3>{{ course }} 價格是 {{ price }}</h3>
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" v-model="courseId" />
+        <input placeholder="courseFullName" v-model="courseFullName" />
+    </div>
+</template>
+
+<script>
+import { reactive, ref, computed, watch } from 'vue'
+export default {
+    setup() {
+        const price = ref(24000)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseDisplayName = computed(function () {
+            // console.log(".")
+            return courseId.value + '../..' + courseFullName.value
+        })
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        // watch(price, function (newValue, oldValue) {
+        //     console.log(`price goes from ${oldValue} to ${newValue}`)
+        // })
+        watch([price, courseId], function (newValue, oldValue) {
+            //console.log(newValue)
+            //console.log(oldValue)
+            console.log(`price goes from ${oldValue[0]} to ${newValue[0]}`)
+            console.log(`name goes from ${oldValue[1]} to ${newValue[1]}`)
+        })
+
+        // function setCourseId(e) {
+        //     courseId.value = e.target.value
+        // }
+        // function setCourseFullName(e) {
+        //     courseFullName.value = e.target.value
+        // }
+        return {
+            course, extraDuration, price, courseDisplayName,
+            courseId, courseFullName
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <h3>{{ course }} 價格是 {{ price }}</h3>
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" v-model="courseId" />
+        <input placeholder="courseFullName" v-model="courseFullName" />
+        <hr />
+        <input type="text"
+        placeholder="alternative course full name"
+        ref="courseFullNameInput">
+        <button @click="setCourseFullNameInput">set course full name</button>
+    </div>
+</template>
+
+<script>
+import { reactive, ref, computed, watch } from 'vue'
+export default {
+    setup() {
+        const price = ref(24000)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseFullNameInput = ref()
+        const courseDisplayName = computed(function () {
+            // console.log(".")
+            return courseId.value + '../..' + courseFullName.value
+        })
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        // watch(price, function (newValue, oldValue) {
+        //     console.log(`price goes from ${oldValue} to ${newValue}`)
+        // })
+        watch([price, courseId], function (newValue, oldValue) {
+            //console.log(newValue)
+            //console.log(oldValue)
+            console.log(`price goes from ${oldValue[0]} to ${newValue[0]}`)
+            console.log(`name goes from ${oldValue[1]} to ${newValue[1]}`)
+        })
+        function setCourseFullNameInput() {
+            courseFullName.value = courseFullNameInput.value.value
+        }
+        // function setCourseId(e) {
+        //     courseId.value = e.target.value
+        // }
+        // function setCourseFullName(e) {
+        //     courseFullName.value = e.target.value
+        // }
+        return {
+            course, extraDuration, price, courseDisplayName,
+            courseId, courseFullName,courseFullNameInput,
+            setCourseFullNameInput
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CourseIntro.vue
+
+<template>
+    <div>
+        <h3>Course:{{ course }}</h3>
+        <h3>Price:{{ price }}</h3>
+    </div>
+</template>
+
+<script>
+export default {
+    props: ["course", "price"],
+    setup() {
+
+
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <CourseIntro :course="course" :price="price"></CourseIntro>
+        <hr/>
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" v-model="courseId" />
+        <input placeholder="courseFullName" v-model="courseFullName" />
+        <hr />
+        <input type="text" placeholder="alternative course full name" ref="courseFullNameInput">
+        <button @click="setCourseFullNameInput">set course full name</button>
+    </div>
+</template>
+
+<script>
+import { reactive, ref, computed, watch } from 'vue'
+import CourseIntro from './CourseIntro.vue'
+export default {
+    components: { CourseIntro },
+    setup() {
+        const price = ref(24000)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseFullNameInput = ref()
+        const courseDisplayName = computed(function () {
+            // console.log(".")
+            return courseId.value + '../..' + courseFullName.value
+        })
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        // watch(price, function (newValue, oldValue) {
+        //     console.log(`price goes from ${oldValue} to ${newValue}`)
+        // })
+        watch([price, courseId], function (newValue, oldValue) {
+            //console.log(newValue)
+            //console.log(oldValue)
+            console.log(`price goes from ${oldValue[0]} to ${newValue[0]}`)
+            console.log(`name goes from ${oldValue[1]} to ${newValue[1]}`)
+        })
+        function setCourseFullNameInput() {
+            courseFullName.value = courseFullNameInput.value.value
+        }
+        // function setCourseId(e) {
+        //     courseId.value = e.target.value
+        // }
+        // function setCourseFullName(e) {
+        //     courseFullName.value = e.target.value
+        // }
+        return {
+            course, extraDuration, price, courseDisplayName,
+            courseId, courseFullName, courseFullNameInput,
+            setCourseFullNameInput
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MyComp1.vue
+
+<template>
+    <div>
+        <h1>元件1</h1>
+        <CourseIntro :courseId="courseId"
+        :courseFullName="courseFullName" :price="price"></CourseIntro>
+        <hr/>
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" v-model="courseId" />
+        <input placeholder="courseFullName" v-model="courseFullName" />
+        <hr />
+        <input type="text" placeholder="alternative course full name" ref="courseFullNameInput">
+        <button @click="setCourseFullNameInput">set course full name</button>
+    </div>
+</template>
+
+<script>
+import { reactive, ref, computed, watch } from 'vue'
+import CourseIntro from './CourseIntro.vue'
+export default {
+    components: { CourseIntro },
+    setup() {
+        const price = ref(24000)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseFullNameInput = ref()
+        const courseDisplayName = computed(function () {
+            // console.log(".")
+            return courseId.value + '../..' + courseFullName.value
+        })
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        // watch(price, function (newValue, oldValue) {
+        //     console.log(`price goes from ${oldValue} to ${newValue}`)
+        // })
+        watch([price, courseId], function (newValue, oldValue) {
+            //console.log(newValue)
+            //console.log(oldValue)
+            console.log(`price goes from ${oldValue[0]} to ${newValue[0]}`)
+            console.log(`name goes from ${oldValue[1]} to ${newValue[1]}`)
+        })
+        function setCourseFullNameInput() {
+            courseFullName.value = courseFullNameInput.value.value
+        }
+        // function setCourseId(e) {
+        //     courseId.value = e.target.value
+        // }
+        // function setCourseFullName(e) {
+        //     courseFullName.value = e.target.value
+        // }
+        return {
+            course, extraDuration, price, courseDisplayName,
+            courseId, courseFullName, courseFullNameInput,
+            setCourseFullNameInput
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h3>Course:{{ course }}</h3>
+        <h3>Price:{{ price }}</h3>
+    </div>
+</template>
+
+<script>
+import { computed } from 'vue';
+
+export default {
+    props: ["courseId", "courseFullName", "price"],
+    setup(props) {
+        const course = computed(function () {
+            if (props.courseFullName) {
+                return `[${props.courseId}]-->${props.courseFullName}`
+            } else {
+                return `${props.courseId}`
+            }
+        })
+
+        return { course }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>元件1</h1>
+        <CourseIntro :courseId="courseId" :courseFullName="courseFullName"></CourseIntro>
+        <hr />
+        <h3>{{ courseDisplayName }}</h3>
+        <button @click="course.duration = course.duration + 7">加一天課</button>
+        <button @click="extraDuration">用函數加一天課</button>
+        <hr />
+        <input placeholder="courseId" v-model="courseId" />
+        <input placeholder="courseFullName" v-model="courseFullName" />
+        <hr />
+        <input type="text" placeholder="alternative course full name" ref="courseFullNameInput">
+        <button @click="setCourseFullNameInput">set course full name</button>
+    </div>
+</template>
+
+<script>
+import { reactive, ref, computed, watch, provide } from 'vue'
+import CourseIntro from './CourseIntro.vue'
+export default {
+    components: { CourseIntro },
+    setup() {
+        const price = ref(24000)
+        provide("price", price)
+        const courseId = ref("")
+        const courseFullName = ref("")
+        const courseFullNameInput = ref()
+        const courseDisplayName = computed(function () {
+            // console.log(".")
+            return courseId.value + '../..' + courseFullName.value
+        })
+        const course = reactive({ name: "POOP", duration: 35 })
+        function extraDuration() {
+            course.duration = course.duration + 7
+            price.value += 5000
+        }
+        // watch(price, function (newValue, oldValue) {
+        //     console.log(`price goes from ${oldValue} to ${newValue}`)
+        // })
+        watch([price, courseId], function (newValue, oldValue) {
+            //console.log(newValue)
+            //console.log(oldValue)
+            console.log(`price goes from ${oldValue[0]} to ${newValue[0]}`)
+            console.log(`name goes from ${oldValue[1]} to ${newValue[1]}`)
+        })
+        function setCourseFullNameInput() {
+            courseFullName.value = courseFullNameInput.value.value
+        }
+        // function setCourseId(e) {
+        //     courseId.value = e.target.value
+        // }
+        // function setCourseFullName(e) {
+        //     courseFullName.value = e.target.value
+        // }
+        return {
+            course, extraDuration, price, courseDisplayName,
+            courseId, courseFullName, courseFullNameInput,
+            setCourseFullNameInput
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h3>Course:{{ course }}</h3>
+        <h3>Price:{{ price }}</h3>
+    </div>
+</template>
+
+<script>
+import { computed, inject } from 'vue';
+
+export default {
+    props: ["courseId", "courseFullName"],
+    setup(props) {
+        const course = computed(function () {
+            if (props.courseFullName) {
+                return `[${props.courseId}]-->${props.courseFullName}`
+            } else {
+                return `${props.courseId}`
+            }
+        })
+        const price = inject("price")
+        return { course, price }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MyOptions2.vue
+<template>
+    <div>
+        <h1>options API的生命周期</h1>
+    </div>
+</template>
+
+<script>
+    export default {
+        
+    }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MyComposition2.vue
+<template>
+    <div>
+        <h1>composition API的生命周期</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    setup() {
+
+
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script setup>
+import MyComp1 from './components/MyComp1.vue';
+import MyComposition2 from './components/MyComposition2.vue';
+import MyOptions2 from './components/MyOptions2.vue';
+
+</script>
+
+<template>
+  <h1>Composition Lab2</h1>
+  <br />
+  <MyComp1></MyComp1>
+  <br/>
+  <MyOptions2></MyOptions2>
+  <br/>
+  <MyComposition2></MyComposition2>
+</template>
+
+<style scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://vuejs.org/guide/essentials/lifecycle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MyOptions2.vue
+
+<template>
+    <div>
+        <h1>options API的生命周期</h1>
+    </div>
+</template>
+
+<script>
+    export default {
+        created(){
+            console.log("也幾乎是初始化之後")
+        },
+        mounted() {
+            console.log("掛載元件之後")
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MyComposition2.vue
+<template>
+    <div>
+        <h1>composition API的生命周期</h1>
+    </div>
+</template>
+
+<script>
+import { onMounted } from 'vue';
+
+export default {
+    setup() {
+        console.log("元件初始化")
+        onMounted(()=>{
+            console.log("composition api掛載之後")
+        })
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+<script setup>
+import MyComp1 from './components/MyComp1.vue';
+import MyComposition2 from './components/MyComposition2.vue';
+import MyOptions2 from './components/MyOptions2.vue';
+import {ref} from 'vue'
+const toggleOptions2 = ref(true)
+const toggleComposition2 = ref(true)
+
+</script>
+
+<template>
+  <h1>Composition Lab2</h1>
+  <br />
+  <MyComp1></MyComp1>
+  <br/>
+  <MyOptions2></MyOptions2>
+  <br/>
+  <MyComposition2></MyComposition2>
+</template>
+
+<style scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script setup>
+import MyComp1 from './components/MyComp1.vue';
+import MyComposition2 from './components/MyComposition2.vue';
+import MyOptions2 from './components/MyOptions2.vue';
+import { ref } from 'vue'
+const displayOptions2 = ref(true)
+const displayComposition2 = ref(true)
+const toggleOptions2 = () => {
+  displayOptions2.value = !displayOptions2.value
+}
+const toggleComposition2 = () => {
+  displayComposition2.value = !displayComposition2.value
+}
+</script>
+
+<template>
+  <h1>Composition Lab2</h1>
+  <br />
+  <MyComp1></MyComp1>
+  <br />
+  <button @click="toggleOptions2">show/hide options component</button>
+  <br/>
+  <div v-if="displayOptions2">
+    <MyOptions2></MyOptions2>
+  </div>
+  <br />
+  <button @click="toggleComposition2">show/hide composition component</button>
+  <br/>
+  <div v-if="displayComposition2">
+    <MyComposition2></MyComposition2>
+  </div>
+</template>
+
+<style scoped></style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>options API的生命周期</h1>
+    </div>
+</template>
+
+<script>
+    export default {
+        created(){
+            console.log("也幾乎是初始化之後")
+        },
+        mounted() {
+            console.log("掛載元件之後")
+        },
+        beforeUnmount() {
+            console.log("即將移除元件")
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+    <div>
+        <h1>composition API的生命周期</h1>
+    </div>
+</template>
+
+<script>
+import { onBeforeUnmount, onMounted } from 'vue';
+
+export default {
+    setup() {
+        console.log("元件初始化")
+        onMounted(()=>{
+            console.log("composition api掛載之後")
+        })
+        onBeforeUnmount(()=>{
+            console.log("composition即將移除元件")
+        })
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FirebasePost.vue
+
+<template>
+    <div>
+        <h1>用firebase儲存資料</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            course: { id: "POOP", name: "Python OOP", duration: 35 },
+            courses: []
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script setup>
+import FirebasePost from './components/FirebasePost.vue';
+import MyComp1 from './components/MyComp1.vue';
+import MyComposition2 from './components/MyComposition2.vue';
+import MyOptions2 from './components/MyOptions2.vue';
+import { ref } from 'vue'
+const displayOptions2 = ref(true)
+const displayComposition2 = ref(true)
+const toggleOptions2 = () => {
+  displayOptions2.value = !displayOptions2.value
+}
+const toggleComposition2 = () => {
+  displayComposition2.value = !displayComposition2.value
+}
+</script>
+
+<template>
+  <h1>Composition Lab2</h1>
+  <br />
+  <MyComp1></MyComp1>
+  <br />
+  <button @click="toggleOptions2">show/hide options component</button>
+  <br/>
+  <div v-if="displayOptions2">
+    <MyOptions2></MyOptions2>
+  </div>
+  <br />
+  <button @click="toggleComposition2">show/hide composition component</button>
+  <br/>
+  <div v-if="displayComposition2">
+    <MyComposition2></MyComposition2>
+  </div>
+  <br/>
+  <FirebasePost></FirebasePost>
+</template>
+
+<style scoped></style>
