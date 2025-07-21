@@ -33,3 +33,10 @@
 - 到 http://localhost:8080/actuator
 - src/main/java :這是Program
 - src/test/java :這是Junit，上到PROD就不會有這個
+- ```
+  mvnw dependency:tree
+  mvnw spring-boot:run
+  mvnw package ---產生JAR到 target資料夾
+  java -jar demo1-0.0.1-SNAPSHOT.jar ---可以run程式
+  mvnw clean ---清除target資料夾內，避免移轉時太肥
+  ```
