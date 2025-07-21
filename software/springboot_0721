@@ -1,0 +1,11 @@
+https://learn.microsoft.com/zh-tw/java/openjdk/download
+https://aka.ms/download-jdk/microsoft-jdk-17.0.15-windows-x64.msi
+
+C:\jdk-17\
+
+cmd
+
+java -version
+javac -version
+set JAVA
+set path
