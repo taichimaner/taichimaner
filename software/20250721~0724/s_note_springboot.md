@@ -31,4 +31,5 @@
 - 就可以看到 src > main > java > Demo Apllication > RUN
 - 到 localhost:8080
 - 到 http://localhost:8080/actuator
-    
+- src/main/java :這是Program
+- src/test/java :這是Junit，上到PROD就不會有這個
