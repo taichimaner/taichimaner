@@ -6,9 +6,10 @@
   - IntelliJ IDEA Community Edition
   - 調整VM大小，%AppData%
     - ```
-     -Xms8192m
-     -Xmx8192m
+      -Xms8192m
+      -Xmx8192m
       ```
+      
 - 下載 Visual VM 2.22
   - 安裝plugin Visual GC
 
