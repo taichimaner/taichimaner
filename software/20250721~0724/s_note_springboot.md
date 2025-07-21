@@ -44,3 +44,5 @@
   mvnw clean ---清除target資料夾內，避免移轉時太肥
   若用ps執行也可以， .\mvnw package
   ```
+- https://maven.apache.org/surefire/maven-surefire-plugin/
+- https://docs.junit.org/current/user-guide/
