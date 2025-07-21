@@ -22,5 +22,8 @@
   - 專案設定為 demo1
   - GENERATE 會產生demo1.zip，下載後解壓縮到 桌面\labs\demo1
 - 使用 Intellj 的 open file 開啟路徑 demo1 (POM.XML所在的路徑)
+  - plugin，安裝 lombok
+    - anno tation 會在原本 .java 經過compiler 變成 .class時，加上 anno tation 的部分，最後產出 .jar(或war、ear)
+  - settings:找 annotation processors，enabled
   - 
     
