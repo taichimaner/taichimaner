@@ -21,4 +21,6 @@
   - Dependencies = web、thymeleaf、validation、lombok、actuator、devtools
   - 專案設定為 demo1
   - GENERATE 會產生demo1.zip，下載後解壓縮到 桌面\labs\demo1
+- 使用 Intellj 的 open file 開啟路徑 demo1 (POM.XML所在的路徑)
+  - 
     
