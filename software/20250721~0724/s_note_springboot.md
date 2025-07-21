@@ -30,4 +30,5 @@
 - Build 專案 (ctrl+F9)
 - 就可以看到 src > main > java > Demo Apllication > RUN
 - 到 localhost:8080
+- 到 http://localhost:8080/actuator
     
