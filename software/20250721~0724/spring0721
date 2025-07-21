@@ -9,3 +9,22 @@ java -version
 javac -version
 set JAVA
 set path
+
+visualvm
+
+
+open as normal
+open as Administrator
+open as normal
+
+visualvm_22\etc\visualvm.conf
+
+# Default location of JDK:
+#
+# It can be overridden on command line by using --jdkhome <dir>
+# Be careful when changing jdkhome.
+# There are two VisualVM launchers for Windows (32-bit and 64-bit) and
+# installer points to one of those in the VisualVM application shortcut 
+# based on the Java version selected at installation time.
+#
+visualvm_jdkhome="C:\\jdk-17"
