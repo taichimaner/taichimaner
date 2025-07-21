@@ -25,5 +25,9 @@
   - plugin，安裝 lombok
     - anno tation 會在原本 .java 經過compiler 變成 .class時，加上 anno tation 的部分，最後產出 .jar(或war、ear)
   - settings:找 annotation processors，enabled
-  - 
+- 到 project 按F4，設定JDK = 17
+- 確認 Build Tools > MVN　的JDK=17
+- Build 專案 (ctrl+F9)
+- 就可以看到 src > main > java > Demo Apllication > RUN
+- 到 localhost:8080
     
