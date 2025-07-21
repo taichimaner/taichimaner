@@ -35,9 +35,11 @@
 - src/main/java :這是Program
 - src/test/java :這是Junit，上到PROD就不會有這個
 - ```
+  Intellj 的teminal中，setting 新增 c:\windows\system32\cmd
   mvnw dependency:tree
   mvnw spring-boot:run
   mvnw package ---產生JAR到 target資料夾
   java -jar demo1-0.0.1-SNAPSHOT.jar ---可以run程式
   mvnw clean ---清除target資料夾內，避免移轉時太肥
+  若用ps執行也可以， .\mvnw package
   ```
